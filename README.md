@@ -7,7 +7,7 @@
 Voir `sample.tex` pour un exemple.
 
 Ce dépôt intègre également le paquet LaTeX `minted.sty` (version plus récente que
-cette distribuée par TeXLive (au 19 septembre 2015), qui dépend du module Python
+cette distribuée par TeXLive, au 19 septembre 2015), qui dépend du module Python
 `pygments` pour la colorisation des sources.
 
 Ces fichiers ont été mis au point initialement pour les cours en CPES Sciences, à
