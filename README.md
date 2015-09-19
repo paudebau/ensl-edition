@@ -13,3 +13,7 @@ cette distribuée par TeXLive (au 19 septembre 2015), qui dépend du module Pyth
 Ces fichiers ont été mis au point initialement pour les cours en CPES Sciences, à
 sa création en 2010-11. Le seul changement concerne le remplacement du paquet
 `listings` par `minted`.
+
+Le logiciel [TeXmacs](http://www.texmacs.org/tmweb/home/) permet de faire tout cela,
+et bien davantage, avec une interface très facile à utiliser.
+
