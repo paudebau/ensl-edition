@@ -1,0 +1,60 @@
+%% -*- coding: iso-safe-unix; mode: latex -*-
+%% pdflatex -recorder -shell-escape sample.tex
+\documentclass[lecture=thpr]{ensldocument}
+
+% This lecture/exercices sheet, etc specifics
+
+\thislecturesubject{Pour la d{\'e}monstration}
+\thislecturesort{TP n$^o1$}
+\thislecturedate{Mercredi 23 septembre \the\year}
+\thislectureauthor{Philippe Audebaud}
+\thislectureshortauthor{Ph. A.}
+
+\usepackage{blindtext} % pour cette demo
+
+\begin{document}
+
+\paragraph{Prolog sample}
+
+\begin{minted}{prolog}
+piExp(R, PI) :- dimension(circle, R, CS), dimension(box, R, BS), PI is CS / BS.
+
+dimension(   box, R, PS) :- PS is R * R.
+dimension(circle, R, PS) :- dimensionRec(circle, 0, R, PSR), PS is PSR * 4.
+
+dimensionRec( _, X, R, PS) :-
+  X > R, PS is 0.
+dimensionRec(circle, X, R, PS) :-
+  X =< R, line(circle, X, R, P), dimensionRec(circle, X + 1, R, NP), PS is P + NP.
+
+line(circle, X, R, P) :- hypot(X, Y, R), P is Y.
+
+hypot(X, Y, R) :- nonvar(X), nonvar(Y), sqrt(X * X + Y * Y, R).
+hypot(X, Y, R) :- nonvar(X), nonvar(R), sqrt(R * R - X * X, Y).
+hypot(X, Y, R) :- nonvar(Y), nonvar(R), sqrt(R * R - Y * Y, X).
+\end{minted}
+
+\paragraph{C sample}
+
+\begin{minted}{c}
+int main() {
+    printf("hello, world");
+    return 0;
+}
+\end{minted}
+
+\paragraph{Python sample}
+
+\begin{minted}{python}
+class Foo
+    def __init__(self):
+        pi = Math::PI
+
+@var = "Pi is approx. #{pi}"
+\end{minted}
+
+\blinddocument
+
+\end{document}
+
+\endinput
