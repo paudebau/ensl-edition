@@ -14,6 +14,16 @@
 
 \begin{document}
 
+\paragraph{OCaml sample}
+
+\begin{minted}{ocaml}
+let rec length_aux len = function
+    [] -> len
+  | a::l -> length_aux (len + 1) l
+
+let length l = length_aux 0 l
+\end{minted}
+
 \paragraph{Prolog sample}
 
 \begin{minted}{prolog}
