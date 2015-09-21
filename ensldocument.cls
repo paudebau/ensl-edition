@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2015-09-19 08:37:10 (paudebau)>
+% Time-stamp: <2015-09-21 06:50:01 (paudebau)>
 
 \def\filename{ensldocument.cls}
 \def\fileversion{1.0}
@@ -62,6 +62,7 @@
 \newcommand{\@lectureassistant}{ASSISTANT MISSING}
 \newcommand{\@lectureshortassistant}{ASSISTANT?}
 \newcommand{\@lecturekeywords}{KEYWORDS MISSING}
+\newcommand{\@lectureurl}{URL MISSING}
 
 \newcommand*{\department}[1]{\renewcommand\@department{#1}}
 \newcommand*{\shortdepartment}[1]{\renewcommand\@shortdepartment{#1}}
@@ -74,6 +75,7 @@
 \newcommand*{\lectureassistant}[1]{\renewcommand\@lectureassistant{#1}}
 \newcommand*{\lectureshortassistant}[1]{\renewcommand\@lectureshortassistant{#1}}
 \newcommand*{\lecturekeywords}[1]{\renewcommand\@lecturekeywords{#1}}
+\newcommand*{\lectureurl}[1]{\renewcommand\@lectureurl{#1}}
 
 % Lecture global configuration
 
@@ -127,7 +129,7 @@
     pdfcreator={Ergon ToolChain + TeXmacs extensions},%
     pdfcopyright={Copyright (c) 2010-\the\year{} --- \@lectureteacher, \@lectureassistant},
     pdflicenseurl={http://creativecommons.org/licenses/by-nc-nd/3.0/},
-    baseurl={https://perso.ens-lyon.fr/philippe.audebaud/ThPr},
+    baseurl={\@lectureurl},
     % PDF rendering
     pdfstartview = FitH,%
     pdfborder = {0 0 0},
