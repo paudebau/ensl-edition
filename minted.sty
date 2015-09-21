@@ -27,7 +27,7 @@
 %% and the derived file minted.sty.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{minted}
-    [2015/07/09 v2.1dev Yet another Pygments shim for LaTeX]
+    [2015/09/09 v2.1 Yet another Pygments shim for LaTeX]
 \RequirePackage{keyval}
 \RequirePackage{kvoptions}
 \RequirePackage{fancyvrb}
@@ -48,8 +48,8 @@
 \DeclareBoolOption{newfloat}
 \DeclareBoolOption[true]{cache}
 \StrSubstitute{\jobname}{ }{_}[\minted@jobname]
+\StrSubstitute{\minted@jobname}{*}{_}[\minted@jobname]
 \StrSubstitute{\minted@jobname}{"}{}[\minted@jobname]
-\StrSubstitute{\minted@jobname}{*}{-}[\minted@jobname]
 \newcommand{\minted@cachedir}{\detokenize{_}minted-\minted@jobname}
 \let\minted@cachedir@windows\minted@cachedir
 \define@key{minted}{cachedir}{%
@@ -87,7 +87,7 @@
      ^^Jchanges paths in ways minted cannot detect\ifwindows, or by using the
      ^^Jkpsewhich option without PowerShell\fi.}}%
 }
-\newcommand{\minted@infile}{\jobname.out.pyg}
+\newcommand{\minted@infile}{\minted@jobname.out.pyg}
 \newcommand{\minted@cachelist}{}
 \newcommand{\minted@addcachefile}[1]{%
   \expandafter\long\expandafter\gdef\expandafter\minted@cachelist\expandafter{%
@@ -149,12 +149,12 @@
 \newread\minted@appexistsfile
 \newcommand{\TestAppExists}[1]{
   \ifwindows
-    \DeleteFile{\jobname.aex}
+    \DeleteFile{\minted@jobname.aex}
     \immediate\write18{for \string^\@percentchar i in (#1.exe #1.bat #1.cmd)
-      do set >"\jobname.aex" <nul: /p
-      x=\string^\@percentchar \string~$PATH:i>>"\jobname.aex"}
+      do set >"\minted@jobname.aex" <nul: /p
+      x=\string^\@percentchar \string~$PATH:i>>"\minted@jobname.aex"}
     %$ <- balance syntax highlighting
-    \immediate\openin\minted@appexistsfile\jobname.aex
+    \immediate\openin\minted@appexistsfile\minted@jobname.aex
     \expandafter\def\expandafter\@tmp@cr\expandafter{\the\endlinechar}
     \endlinechar=-1\relax
     \readline\minted@appexistsfile to \minted@apppathifexists
@@ -163,12 +163,12 @@
      {\AppExistsfalse}
      {\AppExiststrue}
     \immediate\closein\minted@appexistsfile
-    \DeleteFile{\jobname.aex}
+    \DeleteFile{\minted@jobname.aex}
   \else
-    \immediate\write18{which "#1" && touch "\jobname.aex"}
-    \IfFileExists{\jobname.aex}
+    \immediate\write18{which "#1" && touch "\minted@jobname.aex"}
+    \IfFileExists{\minted@jobname.aex}
       {\AppExiststrue
-        \DeleteFile{\jobname.aex}}
+        \DeleteFile{\minted@jobname.aex}}
       {\AppExistsfalse}
   \fi
 }
@@ -501,16 +501,16 @@
       {\ifwindows
           \immediate\write18{%
             \MintedPygmentize\space -S \ifstrempty{#1}{default}{#1} -f latex
-            -P commandprefix=PYG#1 > "\minted@outputdir@windows\jobname.out.pyg"}%
+            -P commandprefix=PYG#1 > "\minted@outputdir@windows\minted@jobname.out.pyg"}%
         \else
           \immediate\write18{%
             \MintedPygmentize\space -S \ifstrempty{#1}{default}{#1} -f latex
-            -P commandprefix=PYG#1 > "\minted@outputdir\jobname.out.pyg"}%
+            -P commandprefix=PYG#1 > "\minted@outputdir\minted@jobname.out.pyg"}%
         \fi
         \begingroup
         \let\def\gdef
         \endlinechar=-1\relax
-        \minted@input{\minted@outputdir\jobname.out.pyg}%
+        \minted@input{\minted@outputdir\minted@jobname.out.pyg}%
         \endgroup}%
   \fi
 }
@@ -645,11 +645,13 @@
 \minted@def@optfv{breaksymbolright}
 \minted@def@optfv{breaksymbolsepright}
 \minted@def@optfv{breaksymbolindentright}
+\minted@def@optfv{breakafter}
+\minted@def@optfv@switch{breakaftergroup}
+\minted@def@optfv{breakaftersymbolpre}
+\minted@def@optfv{breakaftersymbolpost}
 \minted@def@optfv@switch{breakanywhere}
 \minted@def@optfv{breakanywheresymbolpre}
 \minted@def@optfv{breakanywheresymbolpost}
-\minted@def@optfv{breakanywhereafter}
-\minted@def@optfv@switch{breakanywhereaftergroup}
 \minted@def@opt@switch{breakbytoken}
 \minted@def@opt@switch{breakbytokenanywhere}
 \minted@def@opt{bgcolor}
@@ -699,15 +701,15 @@
 \newboolean{FV@BreakAnywhere}
 \define@booleankey{FV}{breakanywhere}%
   {\FV@BreakAnywheretrue
-    \let\FancyVerbBreakAnywhereStart\FV@BreakAnywhere
-    \let\FancyVerbBreakAnywhereStop\FV@EndBreakAnywhere
-    \let\FV@BreakAnywhere@Token\FV@BreakAnywhere@AnyToken}%
+    \let\FancyVerbBreakStart\FV@Break
+    \let\FancyVerbBreakStop\FV@EndBreak
+    \let\FV@Break@Token\FV@Break@AnyToken}%
   {\FV@BreakAnywherefalse
-    \let\FancyVerbBreakAnywhereStart\relax
-    \let\FancyVerbBreakAnywhereStop\relax}
+    \let\FancyVerbBreakStart\relax
+    \let\FancyVerbBreakStop\relax}
 \fvset{breakanywhere=false}
-\let\FancyVerbBreakAnywhereStart\relax
-\let\FancyVerbBreakAnywhereStop\relax
+\let\FancyVerbBreakStart\relax
+\let\FancyVerbBreakStop\relax
 \edef\FV@hashchar{\string#}
 \edef\FV@dollarchar{\string$}
 \edef\FV@ampchar{\string&}
@@ -729,44 +731,46 @@
   \let\[\FV@leftsquarebracket
   \let\]\FV@rightsquarebracket
 } %$ <- highlighting
-\define@key{FV}{breakanywhereafter}{%
+\define@key{FV}{breakafter}{%
   \ifstrempty{#1}%
-   {\fvset{breakanywhere=false}%
-    \let\FV@BreakAnywhereAfter\@empty}%
-   {\fvset{breakanywhere=true}%
-    \let\FV@BreakAnywhere@Token\FV@BreakAnywhere@AfterToken
-    \def\FV@BreakAnywhereAfter{#1}}%
+   {\let\FV@BreakAfter\@empty
+    \let\FancyVerbBreakStart\relax
+    \let\FancyVerbBreakStop\relax}%
+   {\def\FV@BreakAfter{#1}%
+    \let\FancyVerbBreakStart\FV@Break
+    \let\FancyVerbBreakStop\FV@EndBreak
+    \let\FV@Break@Token\FV@Break@AfterToken}%
 }
-\fvset{breakanywhereafter={}}
-\newboolean{FV@BreakAnywhereAfterGroup}
-\define@booleankey{FV}{breakanywhereaftergroup}%
- {\FV@BreakAnywhereAfterGrouptrue}%
- {\FV@BreakAnywhereAfterGroupfalse}%
-\fvset{breakanywhereaftergroup=true}
-\def\FV@BreakAnywhereAfterPrep{%
-  \ifx\FV@BreakAnywhereAfter\@empty\relax
+\fvset{breakafter={}}
+\newboolean{FV@BreakAfterGroup}
+\define@booleankey{FV}{breakaftergroup}%
+ {\FV@BreakAfterGrouptrue}%
+ {\FV@BreakAfterGroupfalse}%
+\fvset{breakaftergroup=true}
+\def\FV@BreakAfterPrep{%
+  \ifx\FV@BreakAfter\@empty\relax
   \else
-    \gdef\FV@BreakAnywhereAfter@Def{}%
+    \gdef\FV@BreakAfter@Def{}%
     \begingroup
-    \def\FV@BreakAnywhereAfter@Process##1##2\FV@Undefined{%
-      \expandafter\FV@BreakAnywhereAfter@Process@i\expandafter{##1}%
+    \def\FV@BreakAfter@Process##1##2\FV@Undefined{%
+      \expandafter\FV@BreakAfter@Process@i\expandafter{##1}%
       \expandafter\ifx\expandafter\relax\detokenize{##2}\relax
       \else
-        \FV@BreakAnywhereAfter@Process##2\FV@Undefined
+        \FV@BreakAfter@Process##2\FV@Undefined
       \fi
     }%
-    \def\FV@BreakAnywhereAfter@Process@i##1{%
-      \g@addto@macro\FV@BreakAnywhereAfter@Def{%
-        \@namedef{FV@BreakAnywhereAfter@Token\detokenize{##1}}{}}%
+    \def\FV@BreakAfter@Process@i##1{%
+      \g@addto@macro\FV@BreakAfter@Def{%
+        \@namedef{FV@BreakAfter@Token\detokenize{##1}}{}}%
     }%
     \FV@EscChars
-    \expandafter\FV@BreakAnywhereAfter@Process\FV@BreakAnywhereAfter\FV@Undefined
+    \expandafter\FV@BreakAfter@Process\FV@BreakAfter\FV@Undefined
     \endgroup
-    \FV@BreakAnywhereAfter@Def
+    \FV@BreakAfter@Def
   \fi
 }
 \expandafter\def\expandafter\FV@FormattingPrep\expandafter{%
-  \expandafter\FV@BreakAnywhereAfterPrep\FV@FormattingPrep}
+  \expandafter\FV@BreakAfterPrep\FV@FormattingPrep}
 \define@key{FV}{breakanywheresymbolpre}{%
   \ifstrempty{#1}%
     {\def\FancyVerbBreakAnywhereSymbolPre{}}%
@@ -777,9 +781,22 @@
     {\def\FancyVerbBreakAnywhereSymbolPost{}}%
     {\def\FancyVerbBreakAnywhereSymbolPost{\hbox{#1}}}}
 \fvset{breakanywheresymbolpost={}}
+\define@key{FV}{breakaftersymbolpre}{%
+  \ifstrempty{#1}%
+    {\def\FancyVerbBreakAfterSymbolPre{}}%
+    {\def\FancyVerbBreakAfterSymbolPre{\hbox{#1}}}}
+\fvset{breakaftersymbolpre={\,\footnotesize\ensuremath{_\rfloor}}}
+\define@key{FV}{breakaftersymbolpost}{%
+  \ifstrempty{#1}%
+    {\def\FancyVerbBreakAfterSymbolPost{}}%
+    {\def\FancyVerbBreakAfterSymbolPost{\hbox{#1}}}}
+\fvset{breakaftersymbolpost={}}
 \newcommand{\FancyVerbBreakAnywhereBreak}{%
   \discretionary{\FancyVerbBreakAnywhereSymbolPre}%
    {\FancyVerbBreakAnywhereSymbolPost}{}}
+\newcommand{\FancyVerbBreakAfterBreak}{%
+  \discretionary{\FancyVerbBreakAfterSymbolPre}%
+   {\FancyVerbBreakAfterSymbolPost}{}}
 \newsavebox{\FV@LineBox}
 \newsavebox{\FV@LineIndentBox}
 \let\FV@LineIndentChars\@empty
@@ -804,83 +821,83 @@
   \fi
   \FV@Next
 }
-\def\FV@BreakAnywhere{%
+\def\FV@Break{%
   \def\FV@Tmp{}%
-  \FV@BreakAnywhere@Scan
+  \FV@Break@Scan
 }
-\def\FV@EndBreakAnywhere{\FV@Tmp}
+\def\FV@EndBreak{\FV@Tmp}
 \begingroup
 \catcode`\$=3%
-\gdef\FV@BreakAnywhere@Scan{%
-  \@ifnextchar\FV@EndBreakAnywhere%
+\gdef\FV@Break@Scan{%
+  \@ifnextchar\FV@EndBreak%
    {}%
    {\ifx\@let@token$\relax
-      \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@Math
+      \let\FV@Break@Next\FV@Break@Math
     \else
       \ifx\@let@token\bgroup\relax
-        \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@Group
+        \let\FV@Break@Next\FV@Break@Group
       \else
-        \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@Token
+        \let\FV@Break@Next\FV@Break@Token
       \fi
     \fi
-    \FV@BreakAnywhere@Next}%
+    \FV@Break@Next}%
 }
 \endgroup
 \begingroup
 \catcode`\$=3%
-\gdef\FV@BreakAnywhere@Math$#1${%
+\gdef\FV@Break@Math$#1${%
   \g@addto@macro{\FV@Tmp}{$#1$}%
-  \FV@BreakAnywhere@Scan}
+  \FV@Break@Scan}
 \endgroup
-\def\FV@BreakAnywhere@Group#1{%
+\def\FV@Break@Group#1{%
   \g@addto@macro{\FV@Tmp}{{#1}}%
-  \FV@BreakAnywhere@Scan}
-\def\FV@BreakAnywhere@AnyToken#1{%
+  \FV@Break@Scan}
+\def\FV@Break@AnyToken#1{%
   \g@addto@macro{\FV@Tmp}{\FancyVerbBreakAnywhereBreak#1}%
-  \FV@BreakAnywhere@Scan}
-\def\FV@BreakAnywhere@AfterToken#1{%
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{#1}\endcsname
-    \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@AfterTokenBreak
+  \FV@Break@Scan}
+\def\FV@Break@AfterToken#1{%
+  \ifcsname FV@BreakAfter@Token\detokenize{#1}\endcsname
+    \let\FV@Break@Next\FV@Break@AfterTokenBreak
   \else
-    \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@AfterTokenNoBreak
+    \let\FV@Break@Next\FV@Break@AfterTokenNoBreak
   \fi
-  \FV@BreakAnywhere@Next{#1}%
+  \FV@Break@Next{#1}%
 }
-\def\FV@BreakAnywhere@AfterTokenNoBreak#1{%
+\def\FV@Break@AfterTokenNoBreak#1{%
   \g@addto@macro{\FV@Tmp}{#1}%
-  \FV@BreakAnywhere@Scan}
-\def\FV@BreakAnywhere@AfterTokenBreak#1{%
+  \FV@Break@Scan}
+\def\FV@Break@AfterTokenBreak#1{%
   \@ifnextchar\FV@Space%
-   {\g@addto@macro{\FV@Tmp}{#1}\FV@BreakAnywhere@Scan}%
-   {\ifthenelse{\boolean{FV@BreakAnywhereAfterGroup}}%
+   {\g@addto@macro{\FV@Tmp}{#1}\FV@Break@Scan}%
+   {\ifthenelse{\boolean{FV@BreakAfterGroup}}%
      {\ifx\@let@token#1\relax
         \g@addto@macro{\FV@Tmp}{#1}%
-        \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@Scan
+        \let\FV@Break@Next\FV@Break@Scan
       \else
         \ifx\@let@token\bgroup\relax
           \g@addto@macro{\FV@Tmp}{#1}%
           \let\FV@TmpToken#1%
-          \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@AfterTokenBreak@Group
+          \let\FV@Break@Next\FV@Break@AfterTokenBreak@Group
         \else
-          \g@addto@macro{\FV@Tmp}{#1\FancyVerbBreakAnywhereBreak}%
-          \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@Scan
+          \g@addto@macro{\FV@Tmp}{#1\FancyVerbBreakAfterBreak}%
+          \let\FV@Break@Next\FV@Break@Scan
         \fi
       \fi}%
-     {\g@addto@macro{\FV@Tmp}{#1\FancyVerbBreakAnywhereBreak}%
-      \let\FV@BreakAnywhere@Next\FV@BreakAnywhere@Scan}%
-    \FV@BreakAnywhere@Next}%
+     {\g@addto@macro{\FV@Tmp}{#1\FancyVerbBreakAfterBreak}%
+      \let\FV@Break@Next\FV@Break@Scan}%
+    \FV@Break@Next}%
 }
-\def\FV@BreakAnywhere@AfterTokenBreak@Group#1{%
+\def\FV@Break@AfterTokenBreak@Group#1{%
   \g@addto@macro{\FV@Tmp}{{#1}}%
   \ifstrempty{#1}%
-   {\let\FV@BreakAnywhere@Next\FV@BreakAnywhere@AfterTokenBreak@Group@i}%
-   {\let\FV@BreakAnywhere@Next\FV@BreakAnywhere@Scan}%
-  \FV@BreakAnywhere@Next}
-\def\FV@BreakAnywhere@AfterTokenBreak@Group@i{%
+   {\let\FV@Break@Next\FV@Break@AfterTokenBreak@Group@i}%
+   {\let\FV@Break@Next\FV@Break@Scan}%
+  \FV@Break@Next}
+\def\FV@Break@AfterTokenBreak@Group@i{%
   \@ifnextchar\FV@TmpToken%
-   {\FV@BreakAnywhere@Scan}%
-   {\g@addto@macro{\FV@Tmp}{\FancyVerbBreakAnywhereBreak}%
-    \FV@BreakAnywhere@Scan}}
+   {\FV@Break@Scan}%
+   {\g@addto@macro{\FV@Tmp}{\FancyVerbBreakAfterBreak}%
+    \FV@Break@Scan}}
 \def\FV@makeLineNumber{%
   \hss
   \FancyVerbFormatBreakSymbolLeft{\FancyVerbBreakSymbolLeft}%
@@ -942,11 +959,11 @@
   \ifdim\wd\FV@LineBox>\linewidth
     \setcounter{FancyVerbLineBreakLast}{0}%
     \FV@SaveLineBox{\FancyVerbFormatText{%
-      \FancyVerbBreakAnywhereStart#1\FancyVerbBreakAnywhereStop}}%
+      \FancyVerbBreakStart#1\FancyVerbBreakStop}}%
     \ifdefempty{\FancyVerbBreakSymbolRight}{}{%
       \let\FV@SetLineBreakLast\relax
       \FV@SaveLineBox{\FancyVerbFormatText{%
-        \FancyVerbBreakAnywhereStart#1\FancyVerbBreakAnywhereStop}}}%
+        \FancyVerbBreakStart#1\FancyVerbBreakStop}}}%
     \FV@LeftListNumber
     \FV@LeftListFrame
     \FancyVerbFormatLine{\usebox{\FV@LineBox}}%
@@ -978,7 +995,7 @@
     \colorbox{\minted@bgcol}{\usebox{\minted@bgbox}}}
 \newwrite\minted@code
 \newcommand{\minted@savecode}[1]{
-  \immediate\openout\minted@code\jobname.pyg\relax
+  \immediate\openout\minted@code\minted@jobname.pyg\relax
   \immediate\write\minted@code{\expandafter\detokenize\expandafter{#1}}%
   \immediate\closeout\minted@code}
 \newcounter{minted@FancyVerbLineTemp}
@@ -1003,9 +1020,9 @@
 \ifcsname MintedPygmentize\endcsname\else
   \newcommand{\MintedPygmentize}{pygmentize}
 \fi
-\newcommand{\minted@pygmentize}[2][\minted@outputdir\jobname.pyg]{%
+\newcommand{\minted@pygmentize}[2][\minted@outputdir\minted@jobname.pyg]{%
   \ifthenelse{\equal{\minted@get@opt{autogobble}{false}}{true}}%
-    {\def\minted@codefile{\minted@outputdir\jobname.pyg}}%
+    {\def\minted@codefile{\minted@outputdir\minted@jobname.pyg}}%
     {\def\minted@codefile{#1}}%
   \ifthenelse{\boolean{minted@isinline}}%
     {\def\minted@optlistcl@inlines{%
@@ -1041,7 +1058,7 @@
           {\edef\minted@hash{\pdf@filemdfivesum{#1}%
             \pdf@mdfivesum{\minted@cmd}}}%
       \else
-        \immediate\openout\minted@code\jobname.mintedcmd\relax
+        \immediate\openout\minted@code\minted@jobname.mintedcmd\relax
         \immediate\write\minted@code{\minted@cmd}%
         \ifthenelse{\equal{\minted@get@opt{autogobble}{false}}{true}}%
           {\immediate\write\minted@code{autogobble}}{}%
@@ -1051,18 +1068,18 @@
         \def\minted@hashcmd{%
           \detokenize{python -c "import hashlib;
             hasher = hashlib.sha1();
-            f = open(\"}\minted@outputdir\jobname.mintedcmd\detokenize{\", \"rb\");
+            f = open(\"}\minted@outputdir\minted@jobname.mintedcmd\detokenize{\", \"rb\");
             hasher.update(f.read());
             f.close();
             f = open(\"}#1\detokenize{\", \"rb\");
             hasher.update(f.read());
             f.close();
-            f = open(\"}\minted@outputdir\jobname.mintedmd5\detokenize{\", \"w\");
+            f = open(\"}\minted@outputdir\minted@jobname.mintedmd5\detokenize{\", \"w\");
             macro = \"\\edef\\minted@hash\" + chr(123) + hasher.hexdigest() + chr(125) + \"\";
             f.write(\"\\makeatletter\" + macro + \"\\makeatother\\endinput\n\");
             f.close();"}}%
         \immediate\write18{\minted@hashcmd}%
-        \minted@input{\minted@outputdir\jobname.mintedmd5}%
+        \minted@input{\minted@outputdir\minted@jobname.mintedmd5}%
       \fi
       \edef\minted@infile{\minted@cachedir/\minted@hash.pygtex}%
       \IfFileExists{\minted@infile}{}{%
@@ -1075,7 +1092,7 @@
             f = open(\"}#1\detokenize{\", \"r\", encoding=\"}\minted@encoding\detokenize{\");
             t = f.read();
             f.close();
-            f = open(\"}\minted@outputdir\jobname.pyg\detokenize{\", \"w\", encoding=\"}\minted@encoding\detokenize{\");
+            f = open(\"}\minted@outputdir\minted@jobname.pyg\detokenize{\", \"w\", encoding=\"}\minted@encoding\detokenize{\");
             f.write(textwrap.dedent(t));
             f.close();"}%
           }%
@@ -1093,7 +1110,7 @@
           f = open(\"}#1\detokenize{\", \"r\", encoding=\"}\minted@encoding\detokenize{\");
           t = f.read();
           f.close();
-          f = open(\"}\minted@outputdir\jobname.pyg\detokenize{\", \"w\", encoding=\"}\minted@encoding\detokenize{\");
+          f = open(\"}\minted@outputdir\minted@jobname.pyg\detokenize{\", \"w\", encoding=\"}\minted@encoding\detokenize{\");
           f.write(textwrap.dedent(t));
           f.close();"}%
         }%
@@ -1102,66 +1119,66 @@
       \minted@inputpyg}%
 }
 \def\FV@SpaceMMode{ }
-\def\minted@BreakAnywhereAfterPrep@extension{%
-  \ifcsname FV@BreakAnywhereAfter@Token\@backslashchar\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZbs}}{}%
+\def\minted@BreakAfterPrep@extension{%
+  \ifcsname FV@BreakAfter@Token\@backslashchar\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZbs}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\FV@underscorechar\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZus}}{}%
+  \ifcsname FV@BreakAfter@Token\FV@underscorechar\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZus}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\@charlb\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZob}}{}%
+  \ifcsname FV@BreakAfter@Token\@charlb\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZob}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\@charrb\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZcb}}{}%
+  \ifcsname FV@BreakAfter@Token\@charrb\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZcb}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{^}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZca}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{^}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZca}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\FV@ampchar\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZam}}{}%
+  \ifcsname FV@BreakAfter@Token\FV@ampchar\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZam}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{<}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZlt}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{<}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZlt}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{>}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZgt}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{>}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZgt}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\FV@hashchar\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZsh}}{}%
+  \ifcsname FV@BreakAfter@Token\FV@hashchar\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZsh}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\@percentchar\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZpc}}{}%
+  \ifcsname FV@BreakAfter@Token\@percentchar\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZpc}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\FV@dollarchar\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZdl}}{}%
+  \ifcsname FV@BreakAfter@Token\FV@dollarchar\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZdl}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{-}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZhy}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{-}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZhy}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{'}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZsq}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{'}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZsq}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{"}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZdq}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{"}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZdq}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\FV@tildechar\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZti}}{}%
+  \ifcsname FV@BreakAfter@Token\FV@tildechar\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZti}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{@}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZat}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{@}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZat}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{[}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZlb}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{[}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZlb}}{}%
   \fi
-  \ifcsname FV@BreakAnywhereAfter@Token\detokenize{]}\endcsname
-    \@namedef{FV@BreakAnywhereAfter@Token\detokenize{\PYGZrb}}{}%
+  \ifcsname FV@BreakAfter@Token\detokenize{]}\endcsname
+    \@namedef{FV@BreakAfter@Token\detokenize{\PYGZrb}}{}%
   \fi
 }
 \newcommand{\minted@inputpyg}{%
-  \let\FV@BreakAnywhereAfterPrep@orig\FV@BreakAnywhereAfterPrep
-  \def\FV@BreakAnywhereAfterPrep{%
-    \FV@BreakAnywhereAfterPrep@orig\minted@BreakAnywhereAfterPrep@extension}%
+  \let\FV@BreakAfterPrep@orig\FV@BreakAfterPrep
+  \def\FV@BreakAfterPrep{%
+    \FV@BreakAfterPrep@orig\minted@BreakAfterPrep@extension}%
   \everymath\expandafter{\the\everymath\let\FV@Space\FV@SpaceMMode}%
   \ifthenelse{\equal{\minted@get@opt{breakbytokenanywhere}{false}}{true}}%
     {\setkeys{minted@opt@cmd}{breakbytoken=true}}{}%
@@ -1170,7 +1187,15 @@
        \csname PYG\minted@get@opt{style}{default}\endcsname
      \expandafter\def\csname PYG\minted@get@opt{style}{default}\endcsname##1##2{%
        \minted@orig@PYG@breakanywhere{##1}%
-         {\FancyVerbBreakAnywhereStart##2\FancyVerbBreakAnywhereStop}}}{}%
+         {\FancyVerbBreakStart##2\FancyVerbBreakStop}}}{}%
+  \ifx\FV@BreakAfter\@empty
+  \else
+    \expandafter\let\expandafter\minted@orig@PYG@breakafter%
+      \csname PYG\minted@get@opt{style}{default}\endcsname
+    \expandafter\def\csname PYG\minted@get@opt{style}{default}\endcsname##1##2{%
+      \minted@orig@PYG@breakafter{##1}%
+       {\FancyVerbBreakStart##2\FancyVerbBreakStop}}%
+  \fi
   \ifthenelse{\boolean{minted@isinline}}%
    {\ifthenelse{\equal{\minted@get@opt{breaklines}{false}}{true}}%
     {\let\FV@BeginVBox\relax
@@ -1248,7 +1273,7 @@
 \gdef\minted@defwhitespace@retok{\def {\noexpand\FV@Space}\def^^I{\noexpand\FV@Tab}}%
 \endgroup
 \newcommand{\minted@writecmdcode}[1]{%
-  \immediate\openout\minted@code\jobname.pyg\relax
+  \immediate\openout\minted@code\minted@jobname.pyg\relax
   \immediate\write\minted@code{\detokenize{#1}}%
   \immediate\closeout\minted@code}
 \newrobustcmd{\mintinline}[2][]{%
@@ -1372,7 +1397,7 @@
       \minted@configlang{#2}%
       \setkeys{minted@opt@cmd}{#1}%
       \minted@fvset
-      \begin{VerbatimOut}[codes={\catcode`\^^I=12}]{\jobname.pyg}}%
+      \begin{VerbatimOut}[codes={\catcode`\^^I=12}]{\minted@jobname.pyg}}%
     {\end{VerbatimOut}%
         \minted@langlinenoson
         \minted@pygmentize{\minted@lang}%
@@ -1470,11 +1495,11 @@
 \AtEndDocument{
   \ifx\XeTeXinterchartoks\minted@undefined
   \else
-    \DeleteFile[\minted@outputdir]{\jobname.mintedcmd}%
-    \DeleteFile[\minted@outputdir]{\jobname.mintedmd5}%
+    \DeleteFile[\minted@outputdir]{\minted@jobname.mintedcmd}%
+    \DeleteFile[\minted@outputdir]{\minted@jobname.mintedmd5}%
   \fi
-  \DeleteFile[\minted@outputdir]{\jobname.pyg}%
-  \DeleteFile[\minted@outputdir]{\jobname.out.pyg}%
+  \DeleteFile[\minted@outputdir]{\minted@jobname.pyg}%
+  \DeleteFile[\minted@outputdir]{\minted@jobname.out.pyg}%
 }
 \endinput
 %%
