@@ -14,6 +14,6 @@ Ces fichiers ont été mis au point initialement pour les cours en CPES Sciences
 sa création en 2010-11. Le seul changement concerne le remplacement du paquet
 `listings` par `minted`.
 
-Le logiciel [TeXmacs](http://www.texmacs.org/tmweb/home/) permet de faire tout cela,
+Le logiciel [TeXmacs](http://www.texmacs.org/) permet de faire tout cela,
 et bien davantage, avec une interface très facile à utiliser.
 
