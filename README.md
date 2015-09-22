@@ -4,7 +4,7 @@
 * Les paramètres relatifs à un cours sont détachés dans un fichier de configuration
 * Les éléments qui ne concerne que le document courant sont en tête de ce document
 
-Voir [`sample.tex`](blob/master/sample.tex) pour un exemple.
+Voir [`sample.tex`](sample.tex) pour un exemple.
 
 Ce dépôt intègre également le paquet LaTeX `minted.sty` (version plus récente que
 cette distribuée par TeXLive, au 19 septembre 2015), qui dépend du module Python
