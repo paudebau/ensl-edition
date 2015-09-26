@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2015-09-26 12:43:51 (paudebau)>
+% Time-stamp: <2015-09-26 12:47:14 (paudebau)>
 
 % \copyright 2015 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -12,7 +12,7 @@
 \def\filedate{2010/08/18}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ensldocument}[\filedate\space v\fileversion\space Copyleft CPA 2010-\number\year]
+\ProvidesClass{ensldocument}[\filedate\space v\fileversion\space Copyright Philippe Audebaud 2010-2015]
 
 \RequirePackage{etoolbox}
 \RequirePackage{lastpage}
