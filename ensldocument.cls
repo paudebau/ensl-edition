@@ -1,6 +1,12 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2015-09-21 06:50:01 (paudebau)>
+% Time-stamp: <2015-09-26 12:43:51 (paudebau)>
 
+% \copyright 2015 Philippe Audebaud <paudebau AT gmail DOT com>
+
+% This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license 
+% To view a copy of this license visit: http://creativecommons.org/licenses/by-sa/4.0/legalcode.
+
+\end{flushright}
 \def\filename{ensldocument.cls}
 \def\fileversion{1.0}
 \def\filedate{2010/08/18}
@@ -128,7 +134,7 @@
     pdfkeywords = {\@lecturekeywords},%
     pdfcreator={Ergon ToolChain + TeXmacs extensions},%
     pdfcopyright={Copyright (c) 2010-\the\year{} --- \@lectureteacher, \@lectureassistant},
-    pdflicenseurl={http://creativecommons.org/licenses/by-nc-nd/3.0/},
+    pdflicenseurl={http://creativecommons.org/licenses/by-nc-sa/4.0/},
     baseurl={\@lectureurl},
     % PDF rendering
     pdfstartview = FitH,%
