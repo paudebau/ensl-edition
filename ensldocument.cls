@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2015-09-26 12:47:14 (paudebau)>
+% Time-stamp: <2015-09-26 12:49:42 (paudebau)>
 
 % \copyright 2015 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -12,7 +12,7 @@
 \def\filedate{2010/08/18}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ensldocument}[\filedate\space v\fileversion\space Copyright Philippe Audebaud 2010-2015]
+\ProvidesClass{ensldocument}[\filedate\space v\fileversion\space Copyright (c) Philippe Audebaud 2010-2015]
 
 \RequirePackage{etoolbox}
 \RequirePackage{lastpage}
@@ -133,7 +133,7 @@
     pdfsubject = {\@thislecturesort{} - \@thislecturesubject},%
     pdfkeywords = {\@lecturekeywords},%
     pdfcreator={Ergon ToolChain + TeXmacs extensions},%
-    pdfcopyright={Copyright (c) 2010-\the\year{} --- \@lectureteacher, \@lectureassistant},
+    pdfcopyright={Copyright (c) \thecursusyearbegin-\thecursusyearend{} --- \@lectureteacher, \@lectureassistant},
     pdflicenseurl={http://creativecommons.org/licenses/by-nc-sa/4.0/},
     baseurl={\@lectureurl},
     % PDF rendering
