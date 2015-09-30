@@ -1,0 +1,31 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2015-09-29 21:08:31 (paudebau)>
+
+\def\filename{thpr.sty}
+\def\fileversion{1.0}
+\def\filedate{2015/09/30}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thpr}[\filedate\space v\fileversion\space thpr macros package]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{proof}
+\newcommand{\prolog}[1]{\mintinline{prolog}{#1}}
+
+\RequirePackage{amsmath, amssymb, mathrsfs, stmaryrd, enumerate, pifont, multido}
+\RequirePackage{amsthm}
+
+\newtheoremstyle{exercice}{2em}{.5em}{}{}{\large \bf}{.\newline}{0pt}{\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}
+\theoremstyle{exercice}
+\newtheorem{exo}{Exercice}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\newcommand{\pair}[2]{\big< #1, #2 \big>}
+\newcommand{\vrai}{\mathrm{vrai}}
+\newcommand{\faux}{\mathrm{faux}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+%\RequirePackage{thpr.semantics}
+%\RequirePackage{thpr.rewriting}

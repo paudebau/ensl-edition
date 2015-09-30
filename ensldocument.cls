@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2015-09-26 12:49:42 (paudebau)>
+% Time-stamp: <2015-09-29 20:04:58 (paudebau)>
 
 % \copyright 2015 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -47,6 +47,8 @@
 }\else{%
   \setcounter{cursusyearbegin}{\year} \setcounter{cursusyearend}{\year + 1}
 }\fi
+
+\InputIfFileExists{\@ensl@lecture.sty}{}{}
 
 %% Institution
 
@@ -102,7 +104,7 @@
 \newcommand*{\thislectureshortauthor}[1]{\renewcommand{\@thislectureshortauthor}{#1}}
 
 \AtEndPreamble{
-  \RequirePackage{hyperref} %%% Want te be call last
+  \RequirePackage{hyperref} %%% Wants te be called as late as possible
   \RequirePackage{hyperxmp}
 
   \setlength{\voffset}{25pt}

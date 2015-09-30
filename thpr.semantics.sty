@@ -1,0 +1,49 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2015-09-29 21:09:26 (paudebau)>
+
+\def\filename{thpr.semantics.sty}
+\def\fileversion{1.0}
+\def\filedate{2015/09/30}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thpr.semantics}[\filedate\space v\fileversion\space semantics goodies]
+
+%%% types et domaines
+\message{, types}
+\newcommand{\Tbool}{\text{\tmsamp{bool}}}
+\newcommand{\Tint}{\text{\tmsamp{int}}}
+% ...
+
+
+%%% IMP
+
+\newcommand{\KW}[1]{\textsf{\textbf{#1}}}
+
+% mots cles
+\message{, keywords}
+\newcommand{\kwskip}{\KW{skip}}
+\newcommand{\kwif}{\mathop \KW{if}}
+\newcommand{\kwthen}{\mathrel \KW{then}}
+\newcommand{\kwelse}{\mathrel \KW{else}}
+\newcommand{\kwwhile}{\mathop \KW{fix}}
+\newcommand{\kwdo}{\mathop \KW{fun}}
+
+\message{, IMP commands}
+\newcommand{\cskip}{\ensuremath{\kwskip}} % commande =/= mot cle
+\newcommand{\cassign}[2]{\ensuremath{{#1} \leftarrow {#2}}}
+\newcommand{\cifte}[3]{\ensuremath{\kwif \ensuremath{#1} \kwthen #2 \kwelse #3}}
+\newcommand{\cwhiledo}[2]{\ensuremath{\kwwhile \ensuremath{#1} \kwdo {#2}}}
+
+%%% C ::= \cassign{x}{e} \mid \cskip \mid C ; C \mid \cifte{b}{C}{C} \mid \cwhiledo{b}{C}
+
+%%% ML
+\message{, ML terms}
+\newcommand{\kwlet}{\mathop \KW{let}}
+\newcommand{\kwrec}{\mathop \KW{rec}}
+\newcommand{\kwin}{\mathrel \KW{in}}
+
+\newcommand{\tletin}[3]{\ensuremath{\kwlet {#1} = {#2} \kwin {#3}}}
+\newcommand{\tletdef}[2]{\ensuremath{\kwlet {#1} = {#2}}}
+\newcommand{\tletrecin}[3]{\ensuremath{\kwlet \kwrec {#1} = {#2} \kwin {#3}}}
+\newcommand{\tletrecdef}[2]{\ensuremath{\kwlet \kwrec #1 = #2}}
+
