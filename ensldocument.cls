@@ -1,12 +1,11 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2015-09-29 20:04:58 (paudebau)>
+% Time-stamp: <2015-10-01 08:03:38 (paudebau)>
 
 % \copyright 2015 Philippe Audebaud <paudebau AT gmail DOT com>
 
 % This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license 
 % To view a copy of this license visit: http://creativecommons.org/licenses/by-sa/4.0/legalcode.
 
-\end{flushright}
 \def\filename{ensldocument.cls}
 \def\fileversion{1.0}
 \def\filedate{2010/08/18}
