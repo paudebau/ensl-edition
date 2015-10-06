@@ -1,0 +1,19 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2015-10-05 13:03:54 (paudebau)>
+
+\def\filename{thpr.rewriting.sty}
+\def\fileversion{1.0}
+\def\filedate{2015/09/30}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thpr.rewriting}[\filedate\space v\fileversion\space rewriting goodies]
+
+\newcommand{\mrel}[1]{\mathrel{#1}}
+
+\newcommand{\equ}{\mathrel{\overset{?}{=}}}
+\newcommand{\xequal}[1]{\mathrel{\overset{#1}{=}}}
+\newcommand{\SigT}[1][{\mathcal X}]{\ensuremath{\mathcal T(\Sigma,#1)}}
+\newcommand{\SigTX}{\SigT{X}}
+
+\newcommand{\SubT}[1]{\ensuremath{\text{Sub} (\Sigma, #1)}}
+\newcommand{\SubTX}{{\SigT{{\mathcal{X}}}}}
