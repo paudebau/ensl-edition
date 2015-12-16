@@ -1,0 +1,25 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2015-12-16 14:36:54 (paudebau)>
+
+\def\filename{pnp.sty}
+\def\fileversion{1.0}
+\def\filedate{2015/09/30}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pnp}[\filedate\space v\fileversion\space pnp macros package]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+
+\RequirePackage{tikz}
+\usetikzlibrary{positioning}
+
+\RequirePackage{proof}
+\newcommand{\prolog}[1]{\mintinline{prolog}{#1}}
+
+\RequirePackage{amsmath, amssymb, mathrsfs, stmaryrd, enumerate, pifont, multido}
+\RequirePackage{amsthm}
+
+
+%\RequirePackage{pnp.this}
+%\RequirePackage{pnp.that}
