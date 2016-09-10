@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-09-10 14:16:58 (paudebau)>
+% Time-stamp: <2016-09-10 19:10:22 (paudebau)>
 
 % \copyright 2016 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -105,8 +105,8 @@
 \newcommand*{\thislectureshortauthor}[1]{\renewcommand{\@thislectureshortauthor}{#1}}
 
 \AtEndPreamble{
-  \RequirePackage{hyperref} %%% Wants te be called as late as possible
   \RequirePackage{hyperxmp}
+  \RequirePackage{hyperref} %%% Wants te be called as late as possible
 
   \setlength{\voffset}{25pt}
   \fancypagestyle{plain}{% This is default style for (first) title page
@@ -131,14 +131,26 @@
   }
 
   \hypersetup{%
-    pdfauthor={\@thislectureauthor - \@institution},%
+    pdfauthor = {\@thislectureauthor},%
+    pdfauthortitle = {\@department, \@institution},%
     pdftitle = {\@lecturetitle},%
     pdfsubject = {\@thislecturesort{} - \@thislecturesubject},%
     pdfkeywords = {\@lecturekeywords},%
-    pdfcreator={Ergon ToolChain + TeXmacs extensions},%
-    pdfcopyright={Copyright (c) \thecursusyearbegin-\thecursusyearend{} --- \@lectureteacher, \@lectureassistant},
-    pdflicenseurl={http://creativecommons.org/licenses/by-nc-sa/4.0/},
-    baseurl={\@lectureurl},
+    pdfcreator = {Ergon ToolChain + TeXmacs extensions},%
+    pdflicenseurl = {http://creativecommons.org/licenses/by-nc-sa/4.0/},%
+    pdfcopyright = {Copyright (c) \thecursusyearbegin-\thecursusyearend{} --- \@lectureteacher, \@lectureassistant},%
+    baseurl = {\@lectureurl},
+    % XMP enhancements
+    pdfcontacturl = {\@lectureurl},%
+    %% pdfdate = {\today},
+    %% pdfcaptionwriter={Scott Pakin},
+    pdfcontactaddress = {\@institution},
+    pdfcontactcity = {Lyon},
+    %% pdfcontactpostcode={3011},
+    pdfcontactcountry = {France},
+    %% pdfcontactphone={031 312 00 91},
+    pdfcontactemail = {Philippe.Audebaud@ens-lyon.fr},
+    %% pdflang={en},
     % PDF rendering
     pdfstartview = FitH,%
     pdfborder = {0 0 0},
@@ -146,7 +158,7 @@
     breaklinks = true, colorlinks = true,%
     linkcolor = blue, anchorcolor = blue,%
     citecolor = blue, filecolor = blue,%
-    menucolor = blue, pagecolor = blue,%
+    menucolor = blue, % pagecolor = blue,%
     urlcolor = blue
   }
 
