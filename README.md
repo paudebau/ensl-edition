@@ -2,12 +2,12 @@
 
 * Ce qui est relatif à l'ENSL est constant (identité, logo, etc)
 * Les paramètres relatifs à un cours sont détachés dans un fichier de configuration
-* Les éléments qui ne concerne que le document courant sont en tête de ce document
+* Les éléments qui ne concernent que le document courant sont en tête de ce document.
 
 Voir [`sample.tex`](sample.tex) pour un exemple.
 
 Ce dépôt intègre également le paquet LaTeX `minted.sty` (version plus récente que
-cette distribuée par TeXLive, au 19 septembre 2015), qui dépend du module Python
+cette distribuée par TeXLive, au 10 septembre 2016), qui dépend du module Python
 `pygments` pour la colorisation des sources.
 
 Ces fichiers ont été mis au point initialement pour les cours en CPES Sciences, à
