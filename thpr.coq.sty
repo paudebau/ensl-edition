@@ -1,0 +1,53 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2016-09-08 16:12:01 (paudebau)>
+
+\def\filename{thpr.coq.sty}
+\def\fileversion{1.0}
+\def\filedate{2015/09/30}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thpr.coq}[\filedate\space v\fileversion\space coq goodies]
+ 
+\newenvironment{tmparmod}[3]{\begin{list}{}{%
+      \setlength{\topsep}{0pt}
+      \setlength{\leftmargin}{#1}
+      \setlength{\rightmargin}{#2}
+      \setlength{\parindent}{#3}
+      \setlength{\listparindent}{\parindent}
+      \setlength{\itemindent}{\parindent}
+      \setlength{\parsep}{\parskip}} \item[]}{\end{list}}
+               
+\newenvironment{tmindent}{\begin{tmparmod}{1.5em}{0pt}{0pt} }{\end{tmparmod}}
+
+\newcommand{\theoremsep}{ }
+\newcommand{\coqprompt}[1]{Coq] }
+\newcommand{\coqinput}[2]{{\genericinput{#1}{#2}}}
+\newcommand{\coqoutput}[1]{{\genericoutput{#1}}}
+\newcommand{\coqsection}[2]{\section*{#1}
+
+#2}
+\newcommand{\coqcommand}[3]{\color[HTML]{000000}#3} % #1 est l'ID, #2 est la couleur dans le modele HTML
+
+\newenvironment{rendertheorem}[2]{\noindent\textbf{#1\ }}{\hspace*{\fill}\medskip}
+
+\newcommand{\coqenunciation}[5]{{\rendertheorem{#3}{
+      \tmtextit{{\color[HTML]{008000}#4}} {\color[HTML]{000000}#5}}}}
+
+\newenvironment{renderproof}[1]{\noindent\textbf{#1\ }}{\hspace*{\fill}$\Box$\medskip}
+\newcommand{\coqproof}[4]{{\color[HTML]{000000}\begin{renderproof}{#3}
+  #4
+\end{renderproof}}}
+
+\newcommand{\rendercoqcommentorig}[1]{{\color[HTML]{C08040}{\small \tmtexttt{#1}}}}
+\newcommand{\rendercoqcomment}[1]{\tmtexttt{#1}}
+
+\newcommand{\coqcomment}[1]{{\rendercoqcomment{\begin{tmindent}
+  (*#1*)
+\end{tmindent}}}}
+\newcommand{\coqcoqdoc}[1]{{\rendercoqcomment{\begin{tmindent}
+  (** #1 *)
+\end{tmindent}}}}
+\newcommand{\coqdoccoq}[1]{{\color[HTML]{000000}{\small \tmtexttt{#1}}}}
+\newcommand{\coqdocverbatim}[1]{\tmcolor{black}{{\small \tmtexttt{#1}}}}
+\newcommand{\coqdocvernac}[1]{{\color[HTML]{000000}{\small \tmtexttt{#1}}}}
+
