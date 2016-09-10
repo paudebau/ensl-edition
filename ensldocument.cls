@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2015-10-01 08:03:38 (paudebau)>
+% Time-stamp: <2016-09-10 13:13:03 (paudebau)>
 
 % \copyright 2015 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -31,7 +31,7 @@
 \RequirePackage{pgf}
 \RequirePackage[french]{babel}
 \RequirePackage{kpfonts}
-\RequirePackage{amssymb,amsmath}
+\RequirePackage{amssymb, amsmath, bbm}
 \RequirePackage{multicol} \setlength{\columnseprule}{0.5pt}
 \RequirePackage[a4paper]{geometry} \geometry{hscale=0.85,vscale=0.85,headheight=30pt}%,showframe}
 
@@ -93,12 +93,14 @@
 \newcommand{\@thislecturesubject}{MISSING SUBJECT}
 \newcommand{\@thislecturesort}{TD, TP, ..?}
 \newcommand{\@thislecturedate}{MISSING DATE}
+\newcommand{\@thislecturekeywords}{MISSING KEYWORDS}
 \newcommand{\@thislectureauthor}{\@lectureassistant}
 \newcommand{\@thislectureshortauthor}{\@lectureshortassistant}
 
 \newcommand*{\thislecturesubject}[1]{\renewcommand{\@thislecturesubject}{#1}}
 \newcommand*{\thislecturesort}[1]{\renewcommand{\@thislecturesort}{#1}}
 \newcommand*{\thislecturedate}[1]{\renewcommand{\@thislecturedate}{#1}}
+\newcommand*{\thislecturekeywords}[1]{\renewcommand{\@thislecturekeywords}{#1}}
 \newcommand*{\thislectureauthor}[1]{\renewcommand{\@thislectureauthor}{#1}}
 \newcommand*{\thislectureshortauthor}[1]{\renewcommand{\@thislectureshortauthor}{#1}}
 

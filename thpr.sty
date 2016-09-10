@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-08-30 09:41:31 (paudebau)>
+% Time-stamp: <2016-09-10 13:19:03 (paudebau)>
 
 \def\filename{thpr.sty}
 \def\fileversion{1.0}
@@ -15,22 +15,38 @@
 \usetikzlibrary{positioning}
 
 \RequirePackage{proof}
-\newcommand{\prolog}[1]{\mintinline{prolog}{#1}}
 
-\RequirePackage{amsmath, amssymb, mathrsfs, stmaryrd, enumerate, pifont, multido}
-\RequirePackage{amsthm}
+\RequirePackage{amsthm, mathrsfs, stmaryrd, enumerate, pifont, multido}
 
-\newtheoremstyle{exercice}{2em}{.5em}{}{}{\large \bf}{.\newline}{0pt}{\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}
-\theoremstyle{exercice}
-\newtheorem{exo}{Exercice}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.5em}
-\newcommand{\pair}[2]{\big< #1, #2 \big>}
-\newcommand{\vrai}{\mathrm{vrai}}
-\newcommand{\faux}{\mathrm{faux}}
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\Var}{\mathrm{Var}}
+\newtheorem{exercise}{Exercice}
 
+%% Rustines (a ranger...)
+
+%% \newtheoremstyle{exercice}{2em}{.5em}{}{}{\large \bf}{.\newline}{0pt}{\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}
+%% \theoremstyle{exercice}
+%% \newtheorem{exo}{Exercice}
+%% \setlength{\parindent}{0pt}
+%% \setlength{\parskip}{0.5em}
+%% \newcommand{\pair}[2]{\big< #1, #2 \big>}
+%% \newcommand{\vrai}{\mathrm{vrai}}
+%% \newcommand{\faux}{\mathrm{faux}}
+%% \newcommand{\NN}{\mathbb{N}}
+%% \newcommand{\ZZ}{\mathbb{Z}}
+%% \newcommand{\Var}{\mathrm{Var}}
+%% \newcommand{\prolog}[1]{\mintinline{prolog}{#1}}
+%% {\theorembodyfont{\rmfamily\small}\newtheorem{exercise}{Exercise}}
+
+
+\RequirePackage{makecmds} % fournit notamment 'provideenvironment'
+\providecommand{\tmdate}{\today}
+
+\providecommand{\nobracket}{}
+\providecommand{\tmem}[1]{{\em #1\/}}
+\providecommand{\tmstrong}[1]{\textbf{#1}}
+%% \providecommand{\tmsubtitle}[1]{\thanks{\textit{Subtitle:} #1}}
+\providecommand{\tmtextbf}[1]{{\bfseries{#1}}}
+\provideenvironment{enumeratealpha}{\begin{enumerate}[a{\textup{)}}] }{\end{enumerate}}
+
+\RequirePackage{thpr.coq}
 \RequirePackage{thpr.semantics}
 \RequirePackage{thpr.rewriting}
