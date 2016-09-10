@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-09-10 19:14:55 (paudebau)>
+% Time-stamp: <2016-09-10 19:19:38 (paudebau)>
 
 % \copyright 2016 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -47,7 +47,7 @@
   \setcounter{cursusyearbegin}{\year} \setcounter{cursusyearend}{\year + 1}
 }\fi
 
-\InputIfFileExists{lecture.\@ensl@lecture.sty}{}{}
+\RequirePackage{lecture.\@ensl@lecture}
 
 %% Institution
 
