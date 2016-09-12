@@ -1,0 +1,76 @@
+% -*- coding: utf-8 -*-
+% Time-stamp: <2016-09-12 10:20:08 (paudebau)>
+
+\def\filename{lecture.metadata.sty}
+\def\fileversion{1.0}
+\def\filedate{2015/08/21}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lecture.metadata package]
+
+\newcounter{cursusyearbegin} \newcounter{cursusyearend}
+\ifnum\month<7{%
+  \setcounter{cursusyearbegin}{\year - 1} \setcounter{cursusyearend}{\year}
+}\else{%
+  \setcounter{cursusyearbegin}{\year} \setcounter{cursusyearend}{\year + 1}
+}\fi
+
+\newcommand{\lectureacademicyear}{\thecursusyearbegin-\thecursusyearend}
+\newcommand{\copyleft}{\reflectbox{\copyright}}
+\newcommand{\copyleftinfo}{Copyleft 2010-\the\year\ --- \lectureauthor}
+%\newcommand{\copyrightinfo}{Copyright \copyright 2010-\thecursusyearend\ --- \lectureauthor . All Rights Reserved.}
+\newcommand{\copyrightinfo}{Copyright (c) 2010-\the\year\ --- \lectureauthor . All Rights Reserved.}
+\newcommand{\colophon}{Ergon ToolChain + TeXmacs extensions}
+
+%% Institution
+
+\RequirePackage{pgf} % juste in case...
+
+\pgfdeclareimage[width=2cm]{ensllogo}{ENS_logo.png}
+\pgfdeclareimage[width=17cm]{enslbar}{ENS_footer.jpg}
+\gdef\@institution{ENS Lyon}
+\gdef\@shortinstitution{ENSL}
+
+%% Lecture description
+
+\newcommand{\@lecturedepartment}{DEPT MISSING}
+\newcommand{\@lectureshortdepartment}{DEPT?}
+\newcommand{\@lecturelevel}{LEVEL MISSING}
+\newcommand{\@lectureshortlevel}{LMD?}
+\newcommand{\@lecturetitle}{TITLE MISSING}
+\newcommand{\@lectureshorttitle}{TITLE?}
+\newcommand{\@lectureteacher}{TEACHER MISSING}
+\newcommand{\@lectureshortteacher}{TEACHER?}
+\newcommand{\@lectureassistant}{ASSISTANT MISSING}
+\newcommand{\@lectureshortassistant}{ASSISTANT?}
+\newcommand{\@lecturekeywords}{KEYWORDS MISSING}
+\newcommand{\@lectureurl}{URL MISSING}
+
+\newcommand*{\lecturedepartment}[1]{\renewcommand\@lecturedepartment{#1}}
+\newcommand*{\lectureshortdepartment}[1]{\renewcommand\@lectureshortdepartment{#1}}
+\newcommand*{\lecturelevel}[1]{\renewcommand\@lecturelevel{#1}}
+\newcommand*{\lectureshortlevel}[1]{\renewcommand\@lectureshortlevel{#1}}
+\newcommand*{\lecturetitle}[1]{\renewcommand\@lecturetitle{#1}}
+\newcommand*{\lectureshorttitle}[1]{\renewcommand\@lectureshorttitle{#1}}
+\newcommand*{\lectureteacher}[1]{\renewcommand\@lectureteacher{#1}}
+\newcommand*{\lectureshortteacher}[1]{\renewcommand\@lectureshortteacher{#1}}
+\newcommand*{\lectureassistant}[1]{\renewcommand\@lectureassistant{#1}}
+\newcommand*{\lectureshortassistant}[1]{\renewcommand\@lectureshortassistant{#1}}
+\newcommand*{\lecturekeywords}[1]{\renewcommand\@lecturekeywords{#1}}
+\newcommand*{\lectureurl}[1]{\renewcommand\@lectureurl{#1}}
+
+%% this lecture description
+
+\newcommand{\@thislecturesubject}{MISSING SUBJECT}
+\newcommand{\@thislecturesort}{TD, TP, ..?}
+\newcommand{\@thislecturedate}{MISSING DATE}
+\newcommand{\@thislecturekeywords}{MISSING KEYWORDS}
+\newcommand{\@thislectureauthor}{\@lectureteacher}
+\newcommand{\@thislectureshortauthor}{\@lectureshortteacher}
+
+\newcommand*{\thislecturesubject}[1]{\renewcommand{\@thislecturesubject}{#1}}
+\newcommand*{\thislecturesort}[1]{\renewcommand{\@thislecturesort}{#1}}
+\newcommand*{\thislecturedate}[1]{\renewcommand{\@thislecturedate}{#1}}
+\newcommand*{\thislecturekeywords}[1]{\renewcommand{\@thislecturekeywords}{#1}}
+\newcommand*{\thislectureauthor}[1]{\renewcommand{\@thislectureauthor}{#1}}
+\newcommand*{\thislectureshortauthor}[1]{\renewcommand{\@thislectureshortauthor}{#1}}
