@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-09-12 11:36:31 (paudebau)>
+% Time-stamp: <2016-09-15 10:55:43 (paudebau)>
 
 % \copyright 2016 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -47,7 +47,8 @@
 % \RequirePackage{lastpage}
 % \RequirePackage{pageslts}
 \RequirePackage{calc}
-\RequirePackage{lecture.metadata}
+\RequirePackage{lecture.metadata} %% metadata pour hyperref & xmp
+\RequirePackage{lecture.texmacs} %% rustine TeXmacs
 % Lecture global configuration
 \InputIfFileExists{\@ensl@lecture.cfg}{}{}
 % this lecture local configuration within main document
@@ -84,7 +85,7 @@
   }
 
   \hypersetup{%
-    pdfauthor = {\@thislectureauthor},%
+    pdfauthor = {\@thislectureteacher},%
     pdfauthortitle = {\@lecturedepartment, \@institution},%
     pdftitle = {\@lecturetitle},%
     pdfsubject = {\@thislecturesort{} - \@thislecturesubject},%
@@ -118,7 +119,7 @@
 
   \title[\@lectureshorttitle]{\bfseries \@lecturetitle}
   \subtitle{\@thislecturesort{} - \bfseries \@thislecturesubject}
-  \author[\@thislectureshortauthor]{\@thislectureauthor}
+  \author[\@thislectureshortteacher]{\@thislectureteacher}
   \institute[\@shortinstitution \@lectureshortdepartment]{\@institution{} - \@lecturedepartment{} - \@lectureshortlevel}
   \date{\@thislecturedate}
   % \titlegraphic{}

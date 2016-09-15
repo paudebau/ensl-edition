@@ -1,0 +1,84 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2016-09-15 13:16:18 (paudebau)>
+
+\def\filename{lecture.texmacs.sty}
+\def\fileversion{1.0}
+\def\filedate{2016/09/15}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lecture texmacs wrapper]
+
+\RequirePackage{xcolor}
+
+\definecolor{cyanp}{cmyk}{.5,.3,0,0}
+
+\definecolor{orange}{rgb}{1.0,0.5,0.5}
+
+\definecolor{yellow}{cmyk}{0,0,.7,0}
+
+\definecolor{pink}{rgb}{1.0,0.5,0.5}
+\definecolor{mauve}{rgb}{1,0,1}
+
+\definecolor{grey}{rgb}{0.75,0.75,0.75}
+\definecolor{beige}{cmyk}{0,.2,.7,0}
+
+\definecolor{brown}{rgb}{0.5,0.25,0.0}
+\definecolor{brun}{cmyk}{0,.5,.7,0}
+\definecolor{brunfonce}{cmyk}{.3,.75,.75,.15}
+
+\definecolor{vertfonce}{rgb}{0,.5,0}
+\definecolor{darkgreen}{rgb}{0.1,0.5,0.1}
+\definecolor{dark green}{rgb}{0.1,0.5,0.1}
+\definecolor{dark green}{rgb}{0,.5,0}
+
+%%% ./latex.old/Bazar/programmationIImacros.sty
+%\newenvironment{question}[1]{{\textbf{Exercice #1}}\par\rm}{\par\smallskip}
+\newtheorem{question}{\translate{Question}}
+
+%  Il faudra retablir le mecanimse lignes/solution utilise a Nice...
+% styles/education/unice/old-mass2-ait.ts
+
+%% \newenvironment{answer}{\medskip
+  
+%%   {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
+
+%% \setjob
+%% \withsolutions
+%% \ifthenelse{\boolean{correction}}{}{\excludecomment{answer}}
+
+\newenvironment{reponse}{\medskip
+  
+  {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
+
+\providecommand{\labelitemi}{}
+\providecommand{\labelitemii}{}
+\providecommand{\labelitemiii}{}
+\providecommand{\labelitemiv}{}
+
+
+%% \providecommand{\tmsubtitle}[1]{\thanks{\textit{Subtitle:} #1}}
+\providecommand{\tmdate}{\today}
+
+\providecommand{\nobracket}{}
+\providecommand{\tmem}[1]{{\em #1\/}}
+\providecommand{\tmstrong}[1]{\textbf{#1}}
+\providecommand{\tmtextbf}[1]{{\bfseries{#1}}}
+
+\providecommand{\tmcolor}[2]{{\color{#1}{#2}}}
+\providecommand{\tmtextit}[1]{{\itshape{#1}}}
+\providecommand{\tmtexttt}[1]{{\ttfamily{#1}}}
+
+\providecommand{\tmem}[1]{{\em #1\/}}
+\providecommand{\tmname}[1]{\textsc{#1}}
+\providecommand{\tmstrong}[1]{\textbf{#1}}
+\providecommand{\tmverbatim}[1]{{\ttfamily{#1}}}
+
+\RequirePackage{makecmds} % fournit notamment 'provideenvironment'
+
+\provideenvironment{enumeratealpha}{\begin{enumerate}[a{\textup{)}}] }{\end{enumerate}}
+
+\newenvironment{tmcode}[1][]{\begin{alltt} }{\end{alltt}}
+%%% \newenvironment{tmindent}{\begin{tmparmod}{1.5em}{0pt}{0pt} }{\end{tmparmod}}
+%%% \newenvironment{tmparmod}[3]{\begin{list}{}{\setlength{\topsep}{0pt}\setlength{\leftmargin}{#1}\setlength{\rightmargin}{#2}\setlength{\parindent}{#3}\setlength{\listparindent}{\parindent}\setlength{\itemindent}{\parindent}\setlength{\parsep}{\parskip}} \item[]}{\end{list}}
+%%% {\theorembodyfont{\rmfamily\small}\newtheorem{exercise}{Exercise}}
+%%% 

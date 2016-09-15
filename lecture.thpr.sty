@@ -1,12 +1,12 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-09-10 19:24:00 (paudebau)>
+% Time-stamp: <2016-09-15 13:18:27 (paudebau)>
 
 \def\filename{lecture.thpr.sty}
 \def\fileversion{1.0}
 \def\filedate{2016/09/10}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space thpr lecture wrapper]
+\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lecture thpr wrapper]
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
@@ -16,7 +16,7 @@
 
 \RequirePackage{proof}
 
-\RequirePackage{amsthm, mathrsfs, stmaryrd, enumerate, pifont, multido}
+\RequirePackage{amsthm, mathrsfs, stmaryrd, enumerate, pifont, multido, alltt}
 
 \newtheorem{exercise}{Exercice}
 
@@ -36,16 +36,6 @@
 %% \newcommand{\prolog}[1]{\mintinline{prolog}{#1}}
 %% {\theorembodyfont{\rmfamily\small}\newtheorem{exercise}{Exercise}}
 
-
-\RequirePackage{makecmds} % fournit notamment 'provideenvironment'
-\providecommand{\tmdate}{\today}
-
-\providecommand{\nobracket}{}
-\providecommand{\tmem}[1]{{\em #1\/}}
-\providecommand{\tmstrong}[1]{\textbf{#1}}
-%% \providecommand{\tmsubtitle}[1]{\thanks{\textit{Subtitle:} #1}}
-\providecommand{\tmtextbf}[1]{{\bfseries{#1}}}
-\provideenvironment{enumeratealpha}{\begin{enumerate}[a{\textup{)}}] }{\end{enumerate}}
 
 \RequirePackage{thpr.coq}
 \RequirePackage{thpr.semantics}
