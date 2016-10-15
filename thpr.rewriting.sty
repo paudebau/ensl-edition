@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2015-10-05 13:03:54 (paudebau)>
+% Time-stamp: <2016-10-10 09:50:46 (paudebau)>
 
 \def\filename{thpr.rewriting.sty}
 \def\fileversion{1.0}
@@ -12,8 +12,8 @@
 
 \newcommand{\equ}{\mathrel{\overset{?}{=}}}
 \newcommand{\xequal}[1]{\mathrel{\overset{#1}{=}}}
-\newcommand{\SigT}[1][{\mathcal X}]{\ensuremath{\mathcal T(\Sigma,#1)}}
-\newcommand{\SigTX}{\SigT{X}}
+\newcommand{\SigT}[1]{\ensuremath{\mathcal{T}(\Sigma,#1)}}
+\newcommand{\SigTX}{\SigT{\mathcal{X}}}
 
-\newcommand{\SubT}[1]{\ensuremath{\text{Sub} (\Sigma, #1)}}
-\newcommand{\SubTX}{{\SigT{{\mathcal{X}}}}}
+\newcommand{\SubT}[1]{\ensuremath{\text{Sub}(\Sigma, #1)}}
+\newcommand{\SubTX}{\SubT{\mathcal{X}}}
