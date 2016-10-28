@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-09-15 10:55:43 (paudebau)>
+% Time-stamp: <2016-10-28 13:51:13 (paudebau)>
 
 % \copyright 2016 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -21,7 +21,8 @@
 \SetupKeyvalOptions{family = \@currname, prefix = @ensl@} %%setkeys = <setkeys command>
 \DeclareStringOption[\@currname]{lecture}
 \ProcessKeyvalOptions{\@currname}
-\PackageInfo{\@currname}{currname = \@currname, lecture = \@ensl@lecture}
+\PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, lecture = \@ensl@lecture}
+% \filename@parse{}
 
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
@@ -129,4 +130,16 @@
 \AtBeginDocument{
   \maketitle
   \pagestyle{otherpage}
+}
+
+\AtEndDocument{
+  \def\jobname@corrige{\jobname.corrige.tex}
+  \InputIfFileExists{\jobname@corrige}{%
+    \clearpage
+    \section*{\'El\'ements de correction}
+
+    \input{\jobname@corrige}
+  }{%
+    \PackageInfo{\@currname}{file \jobname.corrige.tex missing, not included}
+  }
 }
