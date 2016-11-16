@@ -27,7 +27,7 @@
 %% and the derived file minted.sty.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{minted}
-    [2016/08/09 v2.4.1dev Yet another Pygments shim for LaTeX]
+    [2016/10/31 v2.4.1 Yet another Pygments shim for LaTeX]
 \RequirePackage{keyval}
 \RequirePackage{kvoptions}
 \RequirePackage{fvextra}
@@ -57,6 +57,7 @@
 \StrSubstitute{\jobname}{ }{_}[\minted@jobname]
 \StrSubstitute{\minted@jobname}{*}{_}[\minted@jobname]
 \StrSubstitute{\minted@jobname}{"}{}[\minted@jobname]
+\StrSubstitute{\minted@jobname}{'}{_}[\minted@jobname]
 \newcommand{\minted@cachedir}{\detokenize{_}minted-\minted@jobname}
 \let\minted@cachedir@windows\minted@cachedir
 \define@key{minted}{cachedir}{%
@@ -654,6 +655,7 @@
 \minted@def@optfv{highlightcolor}
 \minted@def@optfv@switch{curlyquotes}
 \minted@def@optfv@switch{numberfirstline}
+\minted@def@optfv@switch{numberblanklines}
 \minted@def@optfv@switch{stepnumberfromfirst}
 \minted@def@optfv@switch{stepnumberoffsetvalues}
 \minted@def@optfv@switch{showspaces}
