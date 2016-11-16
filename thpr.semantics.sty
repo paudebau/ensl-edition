@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-08-25 12:36:37 (paudebau)>
+% Time-stamp: <2016-11-16 15:32:26 (paudebau)>
 
 \def\filename{thpr.semantics.sty}
 \def\fileversion{1.0}
@@ -53,3 +53,6 @@
 \newcommand{\tletrecin}[3]{\ensuremath{\kwlet \kwrec {#1} = {#2} \kwin {#3}}}
 \newcommand{\tletrecdef}[2]{\ensuremath{\kwlet \kwrec #1 = #2}}
 
+%%% Semantic stuff
+
+\newcommand{\Ssem}[1]{\mathop{[\![ #1 ]\!]}\nolimits}
