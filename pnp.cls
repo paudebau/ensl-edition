@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-09-10 14:15:24 (paudebau)>
+% Time-stamp: <2016-12-22 08:07:00 (paudebau)>
 
 % \copyright 2016 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -12,4 +12,4 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{pnp}[\filedate\space v\fileversion\space Copyright (c) Philippe Audebaud 2010-2016]
-\LoadClass[lecture=pnp]{ensldocument}
+\LoadClass[langage=english,lecture=pnp]{ensldocument}

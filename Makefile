@@ -1,6 +1,7 @@
 ROOT = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 CMD = pdflatex
-CMD_ARGS = --recorder --shell-escape --synctex=1 --interaction nonstopmode
+# --synctex=1 --interaction nonstopmode
+CMD_ARGS = --recorder --shell-escape
 
 all:
 	@echo "clean = suppress junk and noisy files..."

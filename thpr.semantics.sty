@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-11-16 15:32:26 (paudebau)>
+% Time-stamp: <2017-01-02 22:16:19 (paudebau)>
 
 \def\filename{thpr.semantics.sty}
 \def\fileversion{1.0}
@@ -28,11 +28,11 @@
 % mots cles
 \message{, keywords}
 \newcommand{\kwskip}{\KW{skip}}
-\newcommand{\kwif}{\mathop \KW{if}}
-\newcommand{\kwthen}{\mathrel \KW{then}}
-\newcommand{\kwelse}{\mathrel \KW{else}}
-\newcommand{\kwwhile}{\mathop \KW{fix}}
-\newcommand{\kwdo}{\mathop \KW{fun}}
+\newcommand{\kwif}{\mathop{\KW{if}}}
+\newcommand{\kwthen}{\mathrel{\KW{then}}}
+\newcommand{\kwelse}{\mathrel{\KW{else}}}
+\newcommand{\kwwhile}{\mathop{\KW{fix}}}
+\newcommand{\kwdo}{\mathop{\KW{fun}}}
 
 \message{, IMP commands}
 \newcommand{\cskip}{\ensuremath{\kwskip}} % commande =/= mot cle
@@ -44,9 +44,9 @@
 
 %%% ML
 \message{, ML terms}
-\newcommand{\kwlet}{\mathop \KW{let}}
-\newcommand{\kwrec}{\mathop \KW{rec}}
-\newcommand{\kwin}{\mathrel \KW{in}}
+\newcommand{\kwlet}{\mathop{\KW{let}}}
+\newcommand{\kwrec}{\mathop{\KW{rec}}}
+\newcommand{\kwin}{\mathrel{\KW{in}}}
 
 \newcommand{\tletin}[3]{\ensuremath{\kwlet {#1} = {#2} \kwin {#3}}}
 \newcommand{\tletdef}[2]{\ensuremath{\kwlet {#1} = {#2}}}

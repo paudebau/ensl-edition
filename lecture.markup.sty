@@ -1,0 +1,57 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2016-12-22 07:08:34 (paudebau)>
+
+\def\filename{lecture.markup.sty}
+\def\fileversion{1.0}
+\def\filedate{2016/12/21}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lecture markup]
+
+\newtheorem{task}{\translate{Task}}
+\newtheorem{bonustask}{\translate{Bonus Task}}
+
+\newcommand{\updateheader}[2]{\textbf{#1} (#2)}
+
+\newcommand\addstarred[1]{%
+  \expandafter\let\csname\string#1@nostar\endcsname#1%
+  \edef#1{\noexpand\@ifstar\expandafter\noexpand\csname\string#1@star\endcsname\expandafter\noexpand\csname\string#1@nostar\endcsname}%
+  \expandafter\newcommand\csname\string#1@star\endcsname%
+}
+
+%\newcommand{\updateinfo*}[1]{\color{DarkOliveGreen}#1\normalcolor}
+%\newcommand{\updateinfo*}[1]{{\color{dark green}#1}}
+%\newcommand{\updatewarning*}[1]{\color{orange}#1\normalcolor}
+%\newcommand{\updateerror*}[1]{\color{red}#1\normalcolor}
+
+\newcommand{\updateinfostar}[1]{{\color{darkgreen} #1}}
+\newcommand{\updatewarningstar}[1]{{\color{orange} #1}}
+\newcommand{\updateerrorstar}[1]{{\color{red} #1}}
+
+\RequirePackage[framemethod=TikZ]{mdframed}
+
+  %% \mdfsetup{%
+  %%   %frametitle={\tikz\node[fill=white,rectangle,inner sep=0pt,outer sep=0pt]{#2};},
+  %%   frametitleaboveskip=-0.5\ht\strutbox,
+  %%   frametitlealignment=\raggedright
+  %% }%
+
+\definecolor{darkorange}{RGB}{255,140,0}
+
+\mdfdefinestyle{mdinfo}{linecolor=darkgreen,fontcolor=darkgreen,backgroundcolor=darkgreen!10}
+\mdfdefinestyle{mdwarning}{linecolor=darkorange,fontcolor=darkorange,backgroundcolor=darkorange!10}
+\mdfdefinestyle{mderror}{linecolor=red,fontcolor=red,backgroundcolor=red!10}
+
+%% \mdfdefinestyle{exampledefault}{rightline=true,innerleftmargin=10,innerrightmargin=10,
+%%   frametitlerule=true,frametitlerulecolor=green, frametitlebackgroundcolor=yellow, frametitlerulewidth=2pt}
+\mdfdefinestyle{mdframed}{linecolor=lightgray,linewidth=1pt,leftmargin=1cm,rightmargin=1cm,}
+
+% \newenvironment{framedfragment}[1][grey]{\begin{mdframed}[style=mdframed,frametitle={Inhomogeneous linear}]}{\end{mdframed}}
+\newenvironment{framedfragment}[1][grey]{\begin{mdframed}[style=mdframed]}{\end{mdframed}}
+
+\newenvironment{updateinfo}{\begin{mdframed}[style=mdinfo]}{\end{mdframed}}
+\newenvironment{updatewarning}{\begin{mdframed}[style=mdwarning]}{\end{mdframed}}
+\newenvironment{updateerror}{\begin{mdframed}[style=mderror]}{\end{mdframed}}
+
+\endinput
+    

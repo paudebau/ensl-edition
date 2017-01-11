@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-09-10 19:24:12 (paudebau)>
+% Time-stamp: <2016-12-22 06:15:18 (paudebau)>
 
 \def\filename{lecture.pnp.sty}
 \def\fileversion{1.0}
@@ -18,8 +18,10 @@
 \newcommand{\prolog}[1]{\mintinline{prolog}{#1}}
 
 \RequirePackage{amsmath, amssymb, mathrsfs, stmaryrd, enumerate, pifont, multido}
-\RequirePackage{amsthm}
+%% http://tex.stackexchange.com/questions/227305/conflict-between-mdframed-and-amsthm-packages-with-the-use-of-czech-babel
+\RequirePackage{amsthm} %FIXME clash with mdframed should have been fixed...
 
+\RequirePackage{lecture.markup}
+\RequirePackage{thpr.semantics}
 
-%\RequirePackage{pnp.this}
-%\RequirePackage{pnp.that}
+\endinput

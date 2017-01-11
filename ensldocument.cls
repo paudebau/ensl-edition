@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2016-10-28 13:51:13 (paudebau)>
+% Time-stamp: <2017-01-11 12:49:32 (paudebau)>
 
 % \copyright 2016 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -16,24 +16,36 @@
 \RequirePackage{etoolbox}
 \RequirePackage{lastpage}
 \RequirePackage{rerunfilecheck}
+\Requireackage{ifxetex,ifluatex} 
 
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{family = \@currname, prefix = @ensl@} %%setkeys = <setkeys command>
 \DeclareStringOption[\@currname]{lecture}
-\ProcessKeyvalOptions{\@currname}
-\PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, lecture = \@ensl@lecture}
+\DeclareStringOption[english]{langage}%[french]
+% \ProcessKeyvalOptions{\@currname}
+\ProcessKeyvalOptions*
+\PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, langage = \@ensl@langage, lecture = \@ensl@lecture}
+
+% \PassOptionsToPackage{\@ensl@langage}{babel} \RequirePackage{babel}
+\RequirePackage[\@ensl@langage]{babel}
 % \filename@parse{}
 
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
-\LoadClass[a4paper,11pt,compress,french]{article}
+\LoadClass[a4paper,11pt,compress]{article}
+
+\PackageInfo{\@currname}{selecting langage=(\@ensl@langage)}
 
 %%% Specific packages used for lectures at ENS Lyon
 
 \RequirePackage{beamerarticle}
 \RequirePackage{pgf}
-\RequirePackage[french]{babel}
-\RequirePackage[utf8]{inputenc}
+\RequirePackage{babel}%\RequirePackage[french]{babel}
+\ifluatex
+  \typeout{ *** LuaLaTeX *** ^^J}
+\else
+  \RequirePackage[utf8]{inputenc}
+\fi
 \RequirePackage{kpfonts}
 \RequirePackage{amssymb, amsmath, bbm}
 \RequirePackage{multicol} \setlength{\columnseprule}{0.5pt}
@@ -128,6 +140,7 @@
 }
 
 \AtBeginDocument{
+  %\selectlanguage{\@ensl@langage}
   \maketitle
   \pagestyle{otherpage}
 }
