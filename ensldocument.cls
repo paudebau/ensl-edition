@@ -1,9 +1,9 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-11 12:49:32 (paudebau)>
+% Time-stamp: <2017-01-15 09:37:42 (paudebau)>
 
-% \copyright 2016 Philippe Audebaud <paudebau AT gmail DOT com>
+% \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
-% This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license 
+% This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license
 % To view a copy of this license visit: http://creativecommons.org/licenses/by-sa/4.0/legalcode.
 
 \def\filename{ensldocument.cls}
@@ -16,12 +16,13 @@
 \RequirePackage{etoolbox}
 \RequirePackage{lastpage}
 \RequirePackage{rerunfilecheck}
-\Requireackage{ifxetex,ifluatex} 
+\RequirePackage{ifxetex,ifluatex}
 
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{family = \@currname, prefix = @ensl@} %%setkeys = <setkeys command>
 \DeclareStringOption[\@currname]{lecture}
 \DeclareStringOption[english]{langage}%[french]
+\DeclareStringOption[article]{class}
 % \ProcessKeyvalOptions{\@currname}
 \ProcessKeyvalOptions*
 \PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, langage = \@ensl@langage, lecture = \@ensl@lecture}
@@ -32,7 +33,7 @@
 
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
-\LoadClass[a4paper,11pt,compress]{article}
+\LoadClass[a4paper,11pt,compress]{\@ensl@class}
 
 \PackageInfo{\@currname}{selecting langage=(\@ensl@langage)}
 
@@ -62,14 +63,15 @@
 \RequirePackage{calc}
 \RequirePackage{lecture.metadata} %% metadata pour hyperref & xmp
 \RequirePackage{lecture.texmacs} %% rustine TeXmacs
-% Lecture global configuration
-\InputIfFileExists{\@ensl@lecture.cfg}{}{}
-% this lecture local configuration within main document
+\InputIfFileExists{\@ensl@lecture.cfg}{}{} %% Lecture global configuration
+
+%% Just in case something is missing, loaded BEFORE loading the document
+\InputIfFileExists{\jobname.patch.sty}{}{}
 
 %%% Finish
 
 \AtEndPreamble{
-  %% Macros specifiquement requises par le cours \@ensl@lecture
+  %% Macros used in this lecture \@ensl@lecture
   \RequirePackage{lecture.\@ensl@lecture}
 
   \RequirePackage{hyperxmp}
