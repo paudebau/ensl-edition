@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-15 09:37:42 (paudebau)>
+% Time-stamp: <2017-01-21 09:23:14 (paudebau)>
 
 % \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -7,15 +7,13 @@
 % To view a copy of this license visit: http://creativecommons.org/licenses/by-sa/4.0/legalcode.
 
 \def\filename{ensldocument.cls}
-\def\fileversion{1.0}
-\def\filedate{2015/08/18}
+\def\fileversion{1.1}
+\def\filedate{2017/01/17}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ensldocument}[\filedate\space v\fileversion\space Copyright (c) Philippe Audebaud 2010-2016]
+\ProvidesClass{ensldocument}[\filedate\space v\fileversion\space Copyright (c) Philippe Audebaud 2010-2017]
 
 \RequirePackage{etoolbox}
-\RequirePackage{lastpage}
-\RequirePackage{rerunfilecheck}
 \RequirePackage{ifxetex,ifluatex}
 
 \RequirePackage{kvoptions}
@@ -33,46 +31,18 @@
 
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
-\LoadClass[a4paper,11pt,compress]{\@ensl@class}
-
-\PackageInfo{\@currname}{selecting langage=(\@ensl@langage)}
+\LoadClass[a4paper,11pt]{\@ensl@class}
 
 %%% Specific packages used for lectures at ENS Lyon
-
-\RequirePackage{beamerarticle}
-\RequirePackage{pgf}
-\RequirePackage{babel}%\RequirePackage[french]{babel}
-\ifluatex
-  \typeout{ *** LuaLaTeX *** ^^J}
-\else
-  \RequirePackage[utf8]{inputenc}
-\fi
-\RequirePackage{kpfonts}
-\RequirePackage{amssymb, amsmath, bbm}
-\RequirePackage{multicol} \setlength{\columnseprule}{0.5pt}
-\RequirePackage[a4paper]{geometry} \geometry{hscale=0.85,vscale=0.85,headheight=30pt}%,showframe}
-
-\RequirePackage{fancyhdr}
-\RequirePackage{fancyvrb}
-\RequirePackage{minted}
-
-%%% Meta
-
-% \RequirePackage{lastpage}
-% \RequirePackage{pageslts}
-\RequirePackage{calc}
-\RequirePackage{lecture.metadata} %% metadata pour hyperref & xmp
-\RequirePackage{lecture.texmacs} %% rustine TeXmacs
-\InputIfFileExists{\@ensl@lecture.cfg}{}{} %% Lecture global configuration
-
-%% Just in case something is missing, loaded BEFORE loading the document
-\InputIfFileExists{\jobname.patch.sty}{}{}
+\RequirePackage{lecture}
 
 %%% Finish
-
 \AtEndPreamble{
   %% Macros used in this lecture \@ensl@lecture
   \RequirePackage{lecture.\@ensl@lecture}
+  %% Just in case something is missing, loaded BEFORE loading the document
+  \InputIfFileExists{\jobname.patch.sty}{}{}
+
 
   \RequirePackage{hyperxmp}
   \RequirePackage{hyperref} %%% Wants te be called as late as possible

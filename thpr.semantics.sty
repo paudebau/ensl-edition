@@ -1,12 +1,12 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-02 22:16:19 (paudebau)>
+% Time-stamp: <2017-01-21 09:15:41 (paudebau)>
 
 \def\filename{thpr.semantics.sty}
 \def\fileversion{1.0}
 \def\filedate{2015/09/30}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{thpr.semantics}[\filedate\space v\fileversion\space semantics goodies]
+\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space semantics goodies]
 
 %%% types et domaines
 \message{, types}
@@ -23,7 +23,8 @@
 
 %%% IMP
 
-\newcommand{\KW}[1]{\textsf{\textbf{#1}}}
+\providecommand{\KW}[1]{\textsf{\textbf{#1}}}
+%\newcommand{\KW}[1]{\textsf{\textbf{#1}}}
 
 % mots cles
 \message{, keywords}
