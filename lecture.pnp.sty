@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-21 09:16:13 (paudebau)>
+% Time-stamp: <2017-01-21 13:01:11 (paudebau)>
 
 \def\filename{lecture.pnp.sty}
 \def\fileversion{1.0}
@@ -8,20 +8,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{\@currname}[\filedate\space v\fileversion\space pnp lecture wrapper]
 
-\RequirePackage[utf8]{inputenc}
-%\RequirePackage[T1]{fontenc}
-
-\RequirePackage{tikz}
-\usetikzlibrary{positioning}
-
-\RequirePackage{proof}
 \newcommand{\prolog}[1]{\mintinline{prolog}{#1}}
 
-\RequirePackage{amsmath, amssymb, mathrsfs, stmaryrd, enumerate, pifont, multido}
-%% http://tex.stackexchange.com/questions/227305/conflict-between-mdframed-and-amsthm-packages-with-the-use-of-czech-babel
-\RequirePackage{amsthm} %FIXME clash with mdframed should have been fixed...
-
-\RequirePackage{lecture.markup}
 \RequirePackage{thpr.semantics}
 
 \endinput

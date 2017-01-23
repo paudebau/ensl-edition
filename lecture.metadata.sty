@@ -1,5 +1,5 @@
 % -*- coding: utf-8 -*-
-% Time-stamp: <2017-01-15 08:22:20 (paudebau)>
+% Time-stamp: <2017-01-21 11:02:47 (paudebau)>
 
 \def\filename{lecture.metadata.sty}
 \def\fileversion{1.0}
@@ -59,6 +59,10 @@
 \newcommand*{\lecturekeywords}[1]{\renewcommand\@lecturekeywords{#1}}
 \newcommand*{\lectureurl}[1]{\renewcommand\@lectureurl{#1}}
 
+%% TODO
+
+\newcommand{\setacademicyear}[1]{}
+
 %% this lecture description
 
 \newcommand{\@thislecturesubject}{MISSING SUBJECT}
@@ -75,6 +79,9 @@
 \newcommand*{\thislectureteacher}[1]{\renewcommand{\@thislectureteacher}{#1}}
 \newcommand*{\thislectureshortteacher}[1]{\renewcommand{\@thislectureshortteacher}{#1}}
 
-%% TODO
+%% actual parameters
 
-\newcommand{\setacademicyear}[1]{}
+\InputIfFileExists{\@ensl@lecture.cfg}%% Lecture actual configuration
+                  {}% 
+                  {\PackageInfo{\@currname}{file \@ensl@lecture.cfg MISSING; should be edited}}
+

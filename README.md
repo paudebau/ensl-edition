@@ -28,6 +28,7 @@ chaque cours a une étiquette (thpr, pnp, ...) notée ici <label>.
 2. `ensldocument.cls` charge, dans cet ordre :
 
   a. `lecture.sty` : le matériel commun à TOUS les enseignements
+  b. `<label>.cfg` : métadata relative à CET enseignement
   b. `lecture.<label>.sty`: celui ne concernant que CET enseignement
   c. `\jobname.patch.sty` : optionnellement, des macros requise pour CE document
   

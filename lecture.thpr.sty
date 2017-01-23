@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-21 09:16:59 (paudebau)>
+% Time-stamp: <2017-01-21 13:01:39 (paudebau)>
 
 \def\filename{lecture.thpr.sty}
 \def\fileversion{1.0}
@@ -8,34 +8,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lecture thpr wrapper]
 
-\RequirePackage[utf8]{inputenc}
-%\RequirePackage[T1]{fontenc}
-
-\RequirePackage{tikz}
-\usetikzlibrary{positioning}
-
-\RequirePackage{proof}
-
-\RequirePackage{amsthm, mathrsfs, stmaryrd, enumerate, pifont, multido, alltt}
-
 \newtheorem{exercise}{Exercice}
-
-%% Rustines (a ranger...)
-
-%% \newtheoremstyle{exercice}{2em}{.5em}{}{}{\large \bf}{.\newline}{0pt}{\thmname{#1}\thmnumber{ #2}\thmnote{: #3}}
-%% \theoremstyle{exercice}
-%% \newtheorem{exo}{Exercice}
-%% \setlength{\parindent}{0pt}
-%% \setlength{\parskip}{0.5em}
-%% \newcommand{\pair}[2]{\big< #1, #2 \big>}
-%% \newcommand{\vrai}{\mathrm{vrai}}
-%% \newcommand{\faux}{\mathrm{faux}}
-%% \newcommand{\NN}{\mathbb{N}}
-%% \newcommand{\ZZ}{\mathbb{Z}}
-%% \newcommand{\Var}{\mathrm{Var}}
-%% \newcommand{\prolog}[1]{\mintinline{prolog}{#1}}
-%% {\theorembodyfont{\rmfamily\small}\newtheorem{exercise}{Exercise}}
-
 
 \RequirePackage{thpr.coq}
 \RequirePackage{thpr.semantics}

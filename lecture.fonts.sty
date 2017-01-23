@@ -1,0 +1,24 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2017-01-21 13:49:16 (paudebau)>
+
+\def\filename{lecture.fonts.sty}
+\def\fileversion{1.0}
+\def\filedate{2017/01/21}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lecture babel and fonts package]
+
+\RequirePackage{pgf}
+\RequirePackage{babel}%\RequirePackage[french]{babel}
+\ifluatex
+  \typeout{ *** LuaLaTeX *** ^^J}
+\else
+  \RequirePackage[utf8]{inputenc}
+  %\RequirePackage[T1]{fontenc}
+\fi
+
+%\RequirePackage{kpfonts}
+% http://texblog.net/latex-archive/latex-general/beamer-warnings/
+\RequirePackage{lmodern}
+
+\RequirePackage{amssymb, amsmath, bbm}

@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-21 09:23:41 (paudebau)>
+% Time-stamp: <2017-01-23 06:30:37 (paudebau)>
 
 \def\filename{lecture.sty}
 \def\fileversion{1.0}
@@ -12,15 +12,8 @@
 \RequirePackage{rerunfilecheck}
 
 \RequirePackage{beamerarticle}
-\RequirePackage{pgf}
-\RequirePackage{babel}%\RequirePackage[french]{babel}
-\ifluatex
-  \typeout{ *** LuaLaTeX *** ^^J}
-\else
-  \RequirePackage[utf8]{inputenc}
-\fi
-\RequirePackage{kpfonts}
-\RequirePackage{amssymb, amsmath, bbm}
+\RequirePackage{lecture.fonts}
+
 \RequirePackage{multicol} \setlength{\columnseprule}{0.5pt}
 \RequirePackage[a4paper]{geometry} \geometry{hscale=0.85,vscale=0.85,headheight=30pt}%,showframe}
 
@@ -28,12 +21,24 @@
 \RequirePackage{fancyvrb}
 \RequirePackage{minted}
 % \RequirePackage{pageslts}
-
 \RequirePackage{calc}
+\RequirePackage{nicefrac}
+\RequirePackage{pifont}
+\RequirePackage{proof}
+\RequirePackage{enumerate}
+\RequirePackage{multido}
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{mathrsfs}
+\RequirePackage{stmaryrd}
+%%\RequirePackage{alltt}
+%% http://tex.stackexchange.com/questions/227305/conflict-between-mdframed-and-amsthm-packages-with-the-use-of-czech-babel
+\RequirePackage{amsthm} %FIXME clash with mdframed should have been fixed...
+
 \RequirePackage{lecture.metadata} %% metadata pour hyperref & xmp
 \RequirePackage{lecture.texmacs} %% rustine TeXmacs
 \RequirePackage{lecture.markup}
-\InputIfFileExists{\@ensl@lecture.cfg}{}{} %% Lecture global configuration
-
+\RequirePackage{lecture.tikz}
 
 \endinput

@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-21 09:23:14 (paudebau)>
+% Time-stamp: <2017-01-21 10:59:31 (paudebau)>
 
 % \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -11,11 +11,10 @@
 \def\filedate{2017/01/17}
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ensldocument}[\filedate\space v\fileversion\space Copyright (c) Philippe Audebaud 2010-2017]
+\ProvidesClass{\@currname}[\filedate\space v\fileversion\space Copyright (c) Philippe Audebaud 2010-2017]
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex,ifluatex}
-
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{family = \@currname, prefix = @ensl@} %%setkeys = <setkeys command>
 \DeclareStringOption[\@currname]{lecture}
@@ -25,9 +24,7 @@
 \ProcessKeyvalOptions*
 \PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, langage = \@ensl@langage, lecture = \@ensl@lecture}
 
-% \PassOptionsToPackage{\@ensl@langage}{babel} \RequirePackage{babel}
 \RequirePackage[\@ensl@langage]{babel}
-% \filename@parse{}
 
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
@@ -42,7 +39,6 @@
   \RequirePackage{lecture.\@ensl@lecture}
   %% Just in case something is missing, loaded BEFORE loading the document
   \InputIfFileExists{\jobname.patch.sty}{}{}
-
 
   \RequirePackage{hyperxmp}
   \RequirePackage{hyperref} %%% Wants te be called as late as possible
@@ -118,13 +114,12 @@
 }
 
 \AtEndDocument{
+  %% TODO ajuster au choix du langage
   \def\jobname@corrige{\jobname.corrige.tex}
-  \InputIfFileExists{\jobname@corrige}{%
+  \IfFileExists{\jobname@corrige}{%
     \clearpage
     \section*{\'El\'ements de correction}
 
     \input{\jobname@corrige}
-  }{%
-    \PackageInfo{\@currname}{file \jobname.corrige.tex missing, not included}
-  }
+  }{\PackageInfo{\@currname}{file \jobname@corrige missing, not included}}
 }
