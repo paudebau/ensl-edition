@@ -1,0 +1,24 @@
+% -*- coding: iso-safe-unix -*-
+% Time-stamp: <2017-01-22 08:00:43 (paudebau)>
+
+\def\filename{lecture.tikz.sty}
+\def\fileversion{1.0}
+\def\filedate{2017/01/21}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lecture Tikz stuff]
+
+\RequirePackage{tikz}
+\usetikzlibrary{arrows,decorations,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks}
+\usetikzlibrary{positioning}
+
+%\usepackage[graphics,tightpage,active]{preview}
+%\PreviewEnvironment{tikzpicture}
+
+%\newlength{\imagewidth}
+%\newlength{\imagescale}
+
+% TikZ-cd
+\RequirePackage{tikz-cd}
+
+\newcommand{\tikzinput}[1]{\input{#1}}
