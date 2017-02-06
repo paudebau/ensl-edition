@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-23 06:30:37 (paudebau)>
+% Time-stamp: <2017-02-06 08:10:14 (paudebau)>
 
 \def\filename{lecture.sty}
 \def\fileversion{1.0}
@@ -8,7 +8,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lectures common material]
 
-\RequirePackage{lastpage}
+% \RequirePackage{lastpage}
+\RequirePackage{pageslts}
 \RequirePackage{rerunfilecheck}
 
 \RequirePackage{beamerarticle}
@@ -20,21 +21,12 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{fancyvrb}
 \RequirePackage{minted}
-% \RequirePackage{pageslts}
 \RequirePackage{calc}
 \RequirePackage{nicefrac}
 \RequirePackage{pifont}
 \RequirePackage{proof}
 \RequirePackage{enumerate}
 \RequirePackage{multido}
-
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{mathrsfs}
-\RequirePackage{stmaryrd}
-%%\RequirePackage{alltt}
-%% http://tex.stackexchange.com/questions/227305/conflict-between-mdframed-and-amsthm-packages-with-the-use-of-czech-babel
-\RequirePackage{amsthm} %FIXME clash with mdframed should have been fixed...
 
 \RequirePackage{lecture.metadata} %% metadata pour hyperref & xmp
 \RequirePackage{lecture.texmacs} %% rustine TeXmacs

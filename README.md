@@ -35,3 +35,7 @@ chaque cours a une étiquette (thpr, pnp, ...) notée ici <label>.
 Tout ce qui serait dans le préambule du document est chargé entre a) et b).
 Donc, sa juste place est dans b) ou bien dans c) !
 
+# Dépendances
+
+* **minted** [Github](https://github.com/gpoore/minted)
+* **fvextra** [Github](https://github.com/gpoore/fvextra)

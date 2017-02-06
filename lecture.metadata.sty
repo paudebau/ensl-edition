@@ -1,5 +1,5 @@
 % -*- coding: utf-8 -*-
-% Time-stamp: <2017-01-21 11:02:47 (paudebau)>
+% Time-stamp: <2017-01-23 09:30:02 (paudebau)>
 
 \def\filename{lecture.metadata.sty}
 \def\fileversion{1.0}
@@ -7,6 +7,9 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{\@currname}[\filedate\space v\fileversion\space lecture.metadata package]
+
+\RequirePackage{calc}
+\RequirePackage{pgf} % juste in case...
 
 \newcounter{cursusyearbegin} \newcounter{cursusyearend}
 \ifnum\month<7{%
@@ -23,8 +26,6 @@
 \newcommand{\colophon}{Ergon ToolChain + TeXmacs extensions}
 
 %% Institution
-
-\RequirePackage{pgf} % juste in case...
 
 \pgfdeclareimage[width=2cm]{ensllogo}{ENS_logo.png}
 \pgfdeclareimage[width=17cm]{enslbar}{ENS_footer.jpg}

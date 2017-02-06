@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-21 10:59:31 (paudebau)>
+% Time-stamp: <2017-02-06 08:21:07 (paudebau)>
 
 % \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -26,6 +26,7 @@
 
 \RequirePackage[\@ensl@langage]{babel}
 
+\PassOptionsToPackage{colorlinks}{hyperref}
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
 \LoadClass[a4paper,11pt]{\@ensl@class}
@@ -38,10 +39,11 @@
   %% Macros used in this lecture \@ensl@lecture
   \RequirePackage{lecture.\@ensl@lecture}
   %% Just in case something is missing, loaded BEFORE loading the document
-  \InputIfFileExists{\jobname.patch.sty}{}{}
+  \InputIfFileExists{\jobname.patch.sty}{}{\PackageInfo{\@currname}{File \jobname.patch.sty not found}}
 
   \RequirePackage{hyperxmp}
-  \RequirePackage{hyperref} %%% Wants te be called as late as possible
+  \RequirePackage{hyperref} %%% Wants to be called as late as possible
+  % \RequirePackage{cleveref} %%% Requires to be loaded after hyperref!
 
   \setlength{\voffset}{25pt}
   \fancypagestyle{plain}{% This is default style for (first) title page
@@ -95,7 +97,8 @@
     linkcolor = blue, anchorcolor = blue,%
     citecolor = blue, filecolor = blue,%
     menucolor = blue, % pagecolor = blue,%
-    urlcolor = blue
+    urlcolor = blue,
+    final=true % in case draft still active...
   }
 
   \title[\@lectureshorttitle]{\bfseries \@lecturetitle}
@@ -108,6 +111,7 @@
 }
 
 \AtBeginDocument{
+  \pagenumbering{arabic}
   %\selectlanguage{\@ensl@langage}
   \maketitle
   \pagestyle{otherpage}

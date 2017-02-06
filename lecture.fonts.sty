@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-21 13:49:16 (paudebau)>
+% Time-stamp: <2017-02-06 08:12:38 (paudebau)>
 
 \def\filename{lecture.fonts.sty}
 \def\fileversion{1.0}
@@ -17,8 +17,16 @@
   %\RequirePackage[T1]{fontenc}
 \fi
 
-%\RequirePackage{kpfonts}
+% \RequirePackage{kpfonts}
+
 % http://texblog.net/latex-archive/latex-general/beamer-warnings/
 \RequirePackage{lmodern}
 
-\RequirePackage{amssymb, amsmath, bbm}
+\RequirePackage{amssymb,amsmath,bbm}
+\RequirePackage{stmaryrd}
+% http://tex.stackexchange.com/questions/227305/conflict-between-mdframed-and-amsthm-packages-with-the-use-of-czech-babel
+\RequirePackage{amsthm} %FIXME clash with mdframed should have been fixed...
+
+% \RequirePackage{alltt}
+
+
