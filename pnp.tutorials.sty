@@ -1,5 +1,5 @@
 % -*- mode: latex, coding: iso-safe-unix -*-
-% Time-stamp: <2017-02-06 08:18:37 (paudebau)>
+% Time-stamp: <2017-02-14 12:44:20 (paudebau)>
 
 \def\filename{pnp.tutorials.sty}
 \def\fileversion{1.0}
@@ -74,13 +74,17 @@
 \newcommand{\subst}[3]{\ensuremath{#1\langle{#2/{\color{red} #3}}}\rangle}
 
 \newcommand{\rabs}[2]{\ensuremath{\lambda #1 . #2}}
-\newcommand{\rapp}[2]{\ensuremath{\left( #1 \; #2 \right)}}
+\newcommand{\rapp}[2]{\ensuremath{#1 \; #2}}
 \newcommand{\rappl}[2]{\ensuremath{\left( #1 \right) ~ #2}}
 \newcommand{\rappr}[2]{\ensuremath{#1~ \left( #2 \right)}}
+\newcommand{\rapplr}[2]{\ensuremath{\left( #1 \; #2 \right)}}
 
 \newcommand{\riter}[3]{\ensuremath{\Kiter \; {#1} \; {#2} \, {#3}}}
 \newcommand{\rifte}[3]{\ensuremath{\Kif \; #1 \; #2 \; #3}}
 \newcommand{\rpair}[2]{\ensuremath{\Kpair \; #1 \; #2}}
+
+\newcommand{\bnum}[1]{\lceil #1 \rceil}
+\newcommand{\tmmathbf}[1]{\ensuremath{\boldsymbol{#1}}}
 
 % Church-style abstraction
 \newcommand{\tabs}[3]{\ensuremath{\lambda #2^{#1} . #3}}
