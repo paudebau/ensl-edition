@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-02-06 08:21:07 (paudebau)>
+% Time-stamp: <2017-02-23 11:31:54 (paudebau)>
 
 % \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -127,3 +127,8 @@
     \input{\jobname@corrige}
   }{\PackageInfo{\@currname}{file \jobname@corrige missing, not included}}
 }
+
+% \RequirePackage{lastpage}
+\RequirePackage{pageslts}
+\RequirePackage{rerunfilecheck}
+
