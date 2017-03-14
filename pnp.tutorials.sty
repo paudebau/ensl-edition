@@ -1,5 +1,5 @@
 % -*- mode: latex, coding: iso-safe-unix -*-
-% Time-stamp: <2017-02-17 08:45:51 (paudebau)>
+% Time-stamp: <2017-03-14 13:33:08 (paudebau)>
 
 \def\filename{pnp.tutorials.sty}
 \def\fileversion{1.0}
@@ -11,6 +11,12 @@
 % TeXmacs
 
 \newtheorem{exercise}{Exercise}
+
+\newcommand{\nequiv}{\not\equiv}
+\newcommand{\mrel}[1]{\mathrel{#1}}
+\newcommand{\marked}[1]{{\color{red} #1}}
+
+% \begin{mdframed}[hidealllines=true,backgroundcolor=blue!20]
 
 % misc.
 
@@ -51,7 +57,6 @@
   \expandafter\newcommand\csname T#3\endcsname{%
     \ensuremath{\qopname\newmcodes@{\IfBooleanTF #1 m o} {\typew{\IfNoValueTF {#2} {#3} {#2}}}}}}
 \makeatother
-\makeatother
 
 % lambda-Combinators
 \newconstant{I}
@@ -66,6 +71,10 @@
 \newconstant{S}
 \newconstant{if}
 \newconstant{pair}
+
+\newconstant{case}
+\newconstant{in}
+
 \newconstant{iter}
 \newconstant{fact}
 
@@ -83,6 +92,11 @@
 \newcommand{\rifte}[3]{\ensuremath{\Kif \; #1 \; #2 \; #3}}
 \newcommand{\rpair}[2]{\ensuremath{\Kpair \; #1 \; #2}}
 
+\newcommand{\rcase}[3]{\ensuremath{\Kcase~ #1 ~\Kin \left\{ #2, #3 \right\}}}
+\newcommand{\inleft}[2]{\ensuremath{\Kin_g(#1) \mapsto #2}}
+\newcommand{\inright}[2]{\ensuremath{\Kin_d(#1) \mapsto #2}}
+
+% Entiers de Barendregt
 \newcommand{\bnum}[1]{\lceil #1 \rceil}
 
 % Church-style abstraction
@@ -95,3 +109,17 @@
 
 \newvalue{true}
 \newvalue{false}
+
+%% Jugements et autres Martin-Lof's
+
+\newcommand*{\issomething}[1]{\relax\ifnum\lastnodetype>0 \mskip\medmuskip\fi\text{\sffamily{\bfseries{#1}}}}
+
+\newcommand{\isprop}{\issomething{prop}}
+\newcommand{\istrue}{\issomething{true}}
+\newcommand{\istype}{\issomething{type}}
+\newcommand{\isctx}{\issomething{ctx}}
+
+\newcommand{\prop}[1]{\ensuremath{#1\isprop}}
+\newcommand{\type}[1]{\ensuremath{#1\istype}}
+\newcommand{\judg}[1]{\ensuremath{#1\istrue}}
+\newcommand{\ctx}[1]{\ensuremath{#1\isctx}}
