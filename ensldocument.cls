@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-02-23 11:31:54 (paudebau)>
+% Time-stamp: <2017-03-15 11:01:25 (paudebau)>
 
 % \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -20,6 +20,7 @@
 \DeclareStringOption[\@currname]{lecture}
 \DeclareStringOption[english]{langage}%[french]
 \DeclareStringOption[article]{class}
+\DeclareBoolOption[false]{response}
 % \ProcessKeyvalOptions{\@currname}
 \ProcessKeyvalOptions*
 \PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, langage = \@ensl@langage, lecture = \@ensl@lecture}
