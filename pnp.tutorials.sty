@@ -1,5 +1,5 @@
 % -*- mode: latex, coding: iso-safe-unix -*-
-% Time-stamp: <2017-03-14 13:33:08 (paudebau)>
+% Time-stamp: <2017-03-15 11:12:40 (paudebau)>
 
 \def\filename{pnp.tutorials.sty}
 \def\fileversion{1.0}
@@ -9,8 +9,6 @@
 \ProvidesPackage{\@currname}[\filedate\space v\fileversion\space pnp stuff introduced in tutorials]
 
 % TeXmacs
-
-\newtheorem{exercise}{Exercise}
 
 \newcommand{\nequiv}{\not\equiv}
 \newcommand{\mrel}[1]{\mathrel{#1}}
@@ -34,7 +32,7 @@
 \newcommand{\keyw}[1]{\text{\sffamily{\bfseries{#1}}}}
 \newcommand{\mathkeyw}[1]{\ensuremath{\boldsymbol{#1}}}
 \newcommand{\valuew}[1]{\text{{\color{blue} #1}}}
-\newcommand{\typew}[1]{\text{\textss{#1}}}
+\newcommand{\typew}[1]{\text{\sffamily{\bfseries{#1}}}}
 
 \makeatletter
 \DeclareDocumentCommand \newconstant { s o m } {
@@ -71,12 +69,17 @@
 \newconstant{S}
 \newconstant{if}
 \newconstant{pair}
+\newconstant{fst}
+\newconstant{snd}
 
 \newconstant{case}
 \newconstant{in}
 
 \newconstant{iter}
 \newconstant{fact}
+
+\newconstant{add}
+\newconstant{pred}
 
 % term constructors
 
@@ -109,6 +112,14 @@
 
 \newvalue{true}
 \newvalue{false}
+
+%% Termes dans le Systeme F a la Church
+
+\newcommand{\rAbs}[2]{\ensuremath{\lambda #1 . #2}}
+\newcommand{\rApp}[2]{\ensuremath{#1 \; #2}}
+\newcommand{\rAppl}[2]{\ensuremath{\left( #1 \right) ~ #2}}
+\newcommand{\rAppr}[2]{\ensuremath{#1~ \left( #2 \right)}}
+\newcommand{\rApplr}[2]{\ensuremath{\left( #1 \; #2 \right)}}
 
 %% Jugements et autres Martin-Lof's
 
