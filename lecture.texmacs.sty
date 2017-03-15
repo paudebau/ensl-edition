@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-02-17 08:47:22 (paudebau)>
+% Time-stamp: <2017-03-15 11:09:09 (paudebau)>
 
 \def\filename{lecture.texmacs.sty}
 \def\fileversion{1.0}
@@ -43,17 +43,27 @@
 
 %% \setjob
 %% \withsolutions
-%% \ifthenelse{\boolean{correction}}{}{\excludecomment{answer}}
+
+% TODO : analyser la langue...
+\newtheorem{exercise}{Exercice}
+% environnement affiche INCONDITIONNELLEMENT
+\newtheorem{reponse}{R{\'e}ponse}
+
 
 \RequirePackage{comment}
+\if@ensl@response
+  \newtheorem{reponsemasquee}{R{\'e}ponse}
+\else
+  \excludecomment{reponsemasquee}
+\fi
 
-\newenvironment{reponse}{\medskip
+%% \newenvironment{reponse}{\medskip
   
-  {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
+%%   {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
 
-\newenvironment{responsemasquee}{\medskip
+%% \newenvironment{responsemasquee}{\medskip
   
-  {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
+%%   {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
 
 %% FIXME permettre un parametrage !
 %% \includecomment{responsemasquee}
