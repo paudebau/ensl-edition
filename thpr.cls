@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-01-21 09:07:22 (paudebau)>
+% Time-stamp: <2017-04-09 08:05:57 (paudebau)>
 
 % \copyright 2016 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -12,4 +12,4 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{thpr}[\filedate\space v\fileversion\space Copyright (c) Philippe Audebaud 2010-2017]
-\LoadClass[langage=english,lecture=thpr]{ensldocument}
+\LoadClass[language=english,lecture=thpr]{ensldocument}

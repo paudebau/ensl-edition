@@ -23,7 +23,7 @@ chaque cours a une étiquette (thpr, pnp, ...) notée ici <label>.
 
 1. `<label>.cls` appelle `ensldocuments.cls` avec les bonnes options :
 
-    lecture=<label>,langage=...
+    lecture=<label>,language=...
 
 2. `ensldocument.cls` charge, dans cet ordre :
 

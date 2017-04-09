@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-03-15 11:01:25 (paudebau)>
+% Time-stamp: <2017-04-09 08:06:04 (paudebau)>
 
 % \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -18,14 +18,14 @@
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{family = \@currname, prefix = @ensl@} %%setkeys = <setkeys command>
 \DeclareStringOption[\@currname]{lecture}
-\DeclareStringOption[english]{langage}%[french]
+\DeclareStringOption[english]{language}%[french]
 \DeclareStringOption[article]{class}
 \DeclareBoolOption[false]{response}
 % \ProcessKeyvalOptions{\@currname}
 \ProcessKeyvalOptions*
-\PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, langage = \@ensl@langage, lecture = \@ensl@lecture}
+\PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, language = \@ensl@language, lecture = \@ensl@lecture}
 
-\RequirePackage[\@ensl@langage]{babel}
+\RequirePackage[\@ensl@language]{babel}
 
 \PassOptionsToPackage{colorlinks}{hyperref}
 \PassOptionsToPackage{unicode}{hyperref}
@@ -113,7 +113,7 @@
 
 \AtBeginDocument{
   \pagenumbering{arabic}
-  %\selectlanguage{\@ensl@langage}
+  %\selectlanguage{\@ensl@language}
   \maketitle
   \pagestyle{otherpage}
 }

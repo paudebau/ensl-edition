@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-03-15 11:09:09 (paudebau)>
+% Time-stamp: <2017-04-09 08:00:49 (paudebau)>
 
 \def\filename{lecture.texmacs.sty}
 \def\fileversion{1.0}
@@ -31,39 +31,31 @@
 \definecolor{dark green}{rgb}{0,.5,0}
 
 %%% ./latex.old/Bazar/programmationIImacros.sty
-%\newenvironment{question}[1]{{\textbf{Exercice #1}}\par\rm}{\par\smallskip}
 \newtheorem{question}{\translate{Question}}
 
-%  Il faudra retablir le mecanimse lignes/solution utilise a Nice...
-% styles/education/unice/old-mass2-ait.ts
-
-%% \newenvironment{answer}{\medskip
-  
-%%   {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
-
-%% \setjob
-%% \withsolutions
+% Il faudra retablir le mecanimse lignes/solution utilise a Nice...
+% voir styles/education/unice/old-mass2-ait.ts
 
 % TODO : analyser la langue...
 \newtheorem{exercise}{Exercice}
 % environnement affiche INCONDITIONNELLEMENT
 \newtheorem{reponse}{R{\'e}ponse}
-
+\newcommand{\correctiontext}{{\'E}l{\'e}ments de correction}
+\newenvironment{correction}{\begin{mdframed}[backgroundcolor=blue!10]
+%{\bf\noindent{\correctiontext}}
+}{\end{mdframed}\ignorespacesafterend}
 
 \RequirePackage{comment}
+
 \if@ensl@response
+  % les environnements masques sont demasques ;-)
   \newtheorem{reponsemasquee}{R{\'e}ponse}
+  \let\correctionmasquee\correction
+  \let\endcorrectionmasquee\endcorrection
 \else
+  \excludecomment{correctionmasquee}
   \excludecomment{reponsemasquee}
 \fi
-
-%% \newenvironment{reponse}{\medskip
-  
-%%   {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
-
-%% \newenvironment{responsemasquee}{\medskip
-  
-%%   {\bf\noindent{\color{dark green}R\'eponse\ }}}{\normalsize}
 
 %% FIXME permettre un parametrage !
 %% \includecomment{responsemasquee}
@@ -108,6 +100,6 @@
 %%% \newenvironment{tmindent}{\begin{tmparmod}{1.5em}{0pt}{0pt} }{\end{tmparmod}}
 %%% \newenvironment{tmparmod}[3]{\begin{list}{}{\setlength{\topsep}{0pt}\setlength{\leftmargin}{#1}\setlength{\rightmargin}{#2}\setlength{\parindent}{#3}\setlength{\listparindent}{\parindent}\setlength{\itemindent}{\parindent}\setlength{\parsep}{\parskip}} \item[]}{\end{list}}
 %%% {\theorembodyfont{\rmfamily\small}\newtheorem{exercise}{Exercise}}
-%%% 
+%%%
 
 \providecommand{\xleftrightarrow}[2][]{\mathop{\longleftrightarrow}\limits_{#1}^{#2}}
