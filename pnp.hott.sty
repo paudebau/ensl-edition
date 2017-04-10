@@ -1,0 +1,51 @@
+% -*- mode: latex, coding: iso-safe-unix -*-
+% Time-stamp: <2017-04-09 10:45:55 (paudebau)>
+
+\def\filename{pnp.hott.sty}
+\def\fileversion{1.0}
+\def\filedate{2017/04/06}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{\@currname}[\filedate\space v\fileversion\space HoTT related stuff]
+
+%%% Enonces a la Martin-Lof
+
+\newcommand*{\issomething}[1]{\relax\ifnum\lastnodetype>0 \mskip\medmuskip\fi\text{\sffamily{\bfseries{#1}}}}
+
+\newcommand{\isprop}{\issomething{prop}}
+\newcommand{\istrue}{\issomething{true}}
+\newcommand{\istype}{\issomething{type}}
+\newcommand{\isctx}{\issomething{ctx}}
+
+\newcommand{\prop}[1]{\ensuremath{#1\isprop}}
+\newcommand{\type}[1]{\ensuremath{#1\istype}}
+\newcommand{\judg}[1]{\ensuremath{#1\istrue}}
+\newcommand{\ctx}[1]{\ensuremath{#1\isctx}}
+
+%%% Sortes
+
+\newtype{Prop}
+\newtype{Type}
+
+%%% Nat type
+\newtype{Nat}
+\newconstant[0]{zero}
+\newconstant[S]{succ}
+
+%%% Id type
+\newtype{Id}
+\newconstant{J}
+\newconstant{refl}
+\newcommand{\Jstar}[1]{\KJ \left[ #1 \right]}
+\newcommand{\idelim}[3]{\rapp{\Jstar{#1}}{#2 ~ #3}}
+
+\newconstant[tr]{tr}
+\newcommand{\trstar}[1]{\Ktr \left[ #1 \right]}
+\newcommand{\tr}[2]{\rapp{\trstar{#1}}{#2}}
+
+%%% transport (notation du lambda-calcul pur
+\newconstant{ap}
+\newcommand{\ap}[2]{\rapp{\Kap_{#1}}{#2}}
+
+\newconstant{apd}
+\newcommand{\apd}[2]{\rapp{\Kapd_{#1}}{#2}}
