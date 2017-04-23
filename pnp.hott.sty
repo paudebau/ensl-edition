@@ -1,5 +1,5 @@
 % -*- mode: latex, coding: iso-safe-unix -*-
-% Time-stamp: <2017-04-09 10:45:55 (paudebau)>
+% Time-stamp: <2017-04-23 16:01:32 (paudebau)>
 
 \def\filename{pnp.hott.sty}
 \def\fileversion{1.0}
@@ -10,7 +10,7 @@
 
 %%% Enonces a la Martin-Lof
 
-\newcommand*{\issomething}[1]{\relax\ifnum\lastnodetype>0 \mskip\medmuskip\fi\text{\sffamily{\bfseries{#1}}}}
+\newcommand*{\issomething}[1]{\relax\ifnum\lastnodetype>0 \mskip\medmuskip\fi\sfkeyword{#1}}
 
 \newcommand{\isprop}{\issomething{prop}}
 \newcommand{\istrue}{\issomething{true}}
@@ -49,3 +49,14 @@
 
 \newconstant{apd}
 \newcommand{\apd}[2]{\rapp{\Kapd_{#1}}{#2}}
+
+\newconstant{id}
+%% Types exprimant des proprietes d'objets
+
+\newtype{Fib}
+
+\newpredicate[is-contr]{isContr}
+\newpredicate[is-equiv]{isEquiv}
+\newpredicate[is-prop]{isMereProp}
+\newpredicate[is-set]{isSet}
+\newpredicate[quasi-inverse]{qInv}

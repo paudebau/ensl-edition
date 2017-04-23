@@ -1,5 +1,5 @@
 % -*- mode: latex, coding: iso-safe-unix -*-
-% Time-stamp: <2017-04-09 10:31:47 (paudebau)>
+% Time-stamp: <2017-04-20 12:45:47 (paudebau)>
 
 \def\filename{lecture.syntax.sty}
 \def\fileversion{1.0}
@@ -12,10 +12,11 @@
 
 \RequirePackage{xparse}
 
-\newcommand{\keyw}[1]{\text{\sffamily{\bfseries{#1}}}}
-\newcommand{\mathkeyw}[1]{\ensuremath{\boldsymbol{#1}}}
-\newcommand{\valuew}[1]{\text{{\color{blue} #1}}}
-\newcommand{\typew}[1]{\text{\sffamily{\bfseries{#1}}}}
+\newcommand*{\sfkeyword}[1]{\text{\sffamily{#1}}}
+\newcommand*{\keyw}[1]{\text{\sffamily{\bfseries{#1}}}}
+\newcommand*{\mathkeyw}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand*{\valuew}[1]{\text{{\color{blue} #1}}}
+\newcommand*{\typew}[1]{\text{\sffamily{\bfseries{#1}}}}
 
 \makeatletter
 \DeclareDocumentCommand \newconstant { s o m } {
@@ -34,7 +35,13 @@
     \ensuremath{\qopname\newmcodes@{\IfBooleanTF #1 m o} {\valuew{\IfNoValueTF {#2} {#3} {#2}}}}}}
 
 \DeclareDocumentCommand \newtype { s o m } {
-  \message{type V#3 = <#1,#2> ^^J}
+  \message{type T#3 = <#1,#2> ^^J}
   \expandafter\newcommand\csname T#3\endcsname{%
     \ensuremath{\qopname\newmcodes@{\IfBooleanTF #1 m o} {\typew{\IfNoValueTF {#2} {#3} {#2}}}}}}
+
+\DeclareDocumentCommand \newpredicate { s o m } {
+  \message{pred P#3 = <#1,#2> ^^J}
+  \expandafter\newcommand\csname P#3\endcsname{%
+    \ensuremath{\qopname\newmcodes@{\IfBooleanTF #1 m o} {\sfkeyword{\IfNoValueTF {#2} {#3} {#2}}}}}}
+
 \makeatother
