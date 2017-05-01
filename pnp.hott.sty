@@ -1,5 +1,5 @@
 % -*- mode: latex, coding: iso-safe-unix -*-
-% Time-stamp: <2017-04-23 16:01:32 (paudebau)>
+% Time-stamp: <2017-05-01 07:25:24 (paudebau)>
 
 \def\filename{pnp.hott.sty}
 \def\fileversion{1.0}
@@ -34,7 +34,8 @@
 
 %%% Id type
 \newtype{Id}
-\newconstant{J}
+\newconstant{J} % notation de P. Martin-Lof
+\newconstant{ind} % approche preferee : style Ch. Paulin
 \newconstant{refl}
 \newcommand{\Jstar}[1]{\KJ \left[ #1 \right]}
 \newcommand{\idelim}[3]{\rapp{\Jstar{#1}}{#2 ~ #3}}
