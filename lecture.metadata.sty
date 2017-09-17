@@ -1,5 +1,5 @@
 % -*- coding: utf-8 -*-
-% Time-stamp: <2017-01-23 09:30:02 (paudebau)>
+% Time-stamp: <2017-09-14 10:42:40 (paudebau)>
 
 \def\filename{lecture.metadata.sty}
 \def\fileversion{1.0}
@@ -82,7 +82,7 @@
 
 %% actual parameters
 
-\InputIfFileExists{\@ensl@lecture.cfg}%% Lecture actual configuration
+\InputIfFileExists{\lectureid.cfg}%% Lecture actual configuration
                   {}% 
-                  {\PackageInfo{\@currname}{file \@ensl@lecture.cfg MISSING; should be edited}}
+                  {\PackageInfo{\@currname}{file \lectureid.cfg MISSING; should be edited}}
 

@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-04-09 08:06:04 (paudebau)>
+% Time-stamp: <2017-09-14 10:32:26 (paudebau)>
 
 % \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
@@ -16,29 +16,29 @@
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex,ifluatex}
 \RequirePackage{kvoptions}
-\SetupKeyvalOptions{family = \@currname, prefix = @ensl@} %%setkeys = <setkeys command>
+\SetupKeyvalOptions{family = \@currname, prefix = @lecture@} %%setkeys = <setkeys command>
 \DeclareStringOption[\@currname]{lecture}
 \DeclareStringOption[english]{language}%[french]
 \DeclareStringOption[article]{class}
 \DeclareBoolOption[false]{response}
 % \ProcessKeyvalOptions{\@currname}
 \ProcessKeyvalOptions*
-\PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, language = \@ensl@language, lecture = \@ensl@lecture}
+\PackageInfo{\@currname}{jobname = \jobname, currname = \@currname, language = \@lecture@language, lecture = \@lecture@lecture}
 
-\RequirePackage[\@ensl@language]{babel}
+\RequirePackage[\@lecture@language]{babel}
 
 \PassOptionsToPackage{colorlinks}{hyperref}
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
-\LoadClass[a4paper,11pt]{\@ensl@class}
+\LoadClass[a4paper,11pt]{\@lecture@class}
 
 %%% Specific packages used for lectures at ENS Lyon
 \RequirePackage{lecture}
 
 %%% Finish
 \AtEndPreamble{
-  %% Macros used in this lecture \@ensl@lecture
-  \RequirePackage{lecture.\@ensl@lecture}
+  %% Macros used in this lecture \@lecture@lecture
+  \RequirePackage{lecture.\@lecture@lecture}
   %% Just in case something is missing, loaded BEFORE loading the document
   \InputIfFileExists{\jobname.patch.sty}{}{\PackageInfo{\@currname}{File \jobname.patch.sty not found}}
 
@@ -113,7 +113,7 @@
 
 \AtBeginDocument{
   \pagenumbering{arabic}
-  %\selectlanguage{\@ensl@language}
+  %\selectlanguage{\@lecture@language}
   \maketitle
   \pagestyle{otherpage}
 }

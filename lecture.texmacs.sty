@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-04-09 08:00:49 (paudebau)>
+% Time-stamp: <2017-09-17 10:40:18 (paudebau)>
 
 \def\filename{lecture.texmacs.sty}
 \def\fileversion{1.0}
@@ -31,13 +31,13 @@
 \definecolor{dark green}{rgb}{0,.5,0}
 
 %%% ./latex.old/Bazar/programmationIImacros.sty
-\newtheorem{question}{\translate{Question}}
+%%% 1409 \newtheorem{question}{\translate{Question}}
 
 % Il faudra retablir le mecanimse lignes/solution utilise a Nice...
 % voir styles/education/unice/old-mass2-ait.ts
 
 % TODO : analyser la langue...
-\newtheorem{exercise}{Exercice}
+%%% 1409 \newtheorem{exercise}{Exercice}
 % environnement affiche INCONDITIONNELLEMENT
 \newtheorem{reponse}{R{\'e}ponse}
 \newcommand{\correctiontext}{{\'E}l{\'e}ments de correction}
@@ -47,15 +47,16 @@
 
 \RequirePackage{comment}
 
-\if@ensl@response
-  % les environnements masques sont demasques ;-)
-  \newtheorem{reponsemasquee}{R{\'e}ponse}
-  \let\correctionmasquee\correction
-  \let\endcorrectionmasquee\endcorrection
-\else
+%%% 1409 TODO
+%% \if@lecture@response
+%%   % les environnements masques sont demasques ;-)
+%%   \newtheorem{reponsemasquee}{R{\'e}ponse}
+%%   \let\correctionmasquee\correction
+%%   \let\endcorrectionmasquee\endcorrection
+%% \else
   \excludecomment{correctionmasquee}
   \excludecomment{reponsemasquee}
-\fi
+%% \fi
 
 %% FIXME permettre un parametrage !
 %% \includecomment{responsemasquee}
@@ -70,6 +71,8 @@
 \providecommand{\tmdate}{\today}
 
 \providecommand{\nin}{\not\in}
+\providecommand{\nocomma}{}
+\providecommand{\nosymbol}{}
 
 \providecommand{\nobracket}{}
 \providecommand{\tmem}[1]{{\em #1\/}}
@@ -94,7 +97,7 @@
 
 \RequirePackage{makecmds} % fournit notamment 'provideenvironment'
 
-\provideenvironment{enumeratealpha}{\begin{enumerate}[a{\textup{)}}] }{\end{enumerate}}
+%%% 1409 \provideenvironment{enumeratealpha}{\begin{enumerate}[a{\textup{)}}] }{\end{enumerate}}
 
 \newenvironment{tmcode}[1][]{\begin{alltt} }{\end{alltt}}
 %%% \newenvironment{tmindent}{\begin{tmparmod}{1.5em}{0pt}{0pt} }{\end{tmparmod}}
