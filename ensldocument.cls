@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-09-14 10:32:26 (paudebau)>
+% Time-stamp: <2017-09-18 13:06:25 (paudebau)>
 
 % \copyright 2016,2017 Philippe Audebaud <paudebau AT gmail DOT com>
 
