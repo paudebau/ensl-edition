@@ -39,6 +39,7 @@
 
 % TODO : analyser la langue...
 %%% 1409
+\theoremstyle{definition}
 \newtheorem{exercise}{Exercice}
 % environnement affiche INCONDITIONNELLEMENT
 \newtheorem{reponse}{R{\'e}ponse}
@@ -99,7 +100,7 @@
 
 \RequirePackage{makecmds} % fournit notamment 'provideenvironment'
 
-%%% 1409 \provideenvironment{enumeratealpha}{\begin{enumerate}[a{\textup{)}}] }{\end{enumerate}}
+\provideenvironment{enumeratealpha}{\begin{enumerate}[a{\textup{)}}] }{\end{enumerate}}
 
 \newenvironment{tmcode}[1][]{\begin{alltt} }{\end{alltt}}
 %%% \newenvironment{tmindent}{\begin{tmparmod}{1.5em}{0pt}{0pt} }{\end{tmparmod}}
