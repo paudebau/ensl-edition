@@ -13,6 +13,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{\@currname}[\filedate\space v\fileversion\space Copyright (c) Philippe Audebaud 2010-2017]
 
+\RequirePackage{atveryend}
 \RequirePackage{etoolbox}
 \RequirePackage{ifxetex,ifluatex}
 \RequirePackage{kvoptions}
