@@ -1,5 +1,5 @@
 % -*- mode: latex, coding: iso-safe-unix -*-
-% Time-stamp: <2017-05-01 07:25:24 (paudebau)>
+% Time-stamp: <2020-01-09 08:53:36 (paudebau)>
 
 \def\filename{pnp.hott.sty}
 \def\fileversion{1.0}
@@ -27,16 +27,30 @@
 \newtype{Prop}
 \newtype{Type}
 
+%%% Bool type
+
+\newtype{Bool}
+\newconstant[true]{true}
+\newconstant[false]{false}
+
 %%% Nat type
+
 \newtype{Nat}
 \newconstant[0]{zero}
 \newconstant[S]{succ}
 
+%%% Sum type
+
+\newconstant{inl}
+\newconstant{inr}
+
 %%% Id type
+
 \newtype{Id}
 \newconstant{J} % notation de P. Martin-Lof
 \newconstant{ind} % approche preferee : style Ch. Paulin
 \newconstant{refl}
+
 \newcommand{\Jstar}[1]{\KJ \left[ #1 \right]}
 \newcommand{\idelim}[3]{\rapp{\Jstar{#1}}{#2 ~ #3}}
 
@@ -45,6 +59,7 @@
 \newcommand{\tr}[2]{\rapp{\trstar{#1}}{#2}}
 
 %%% transport (notation du lambda-calcul pur
+
 \newconstant{ap}
 \newcommand{\ap}[2]{\rapp{\Kap_{#1}}{#2}}
 
@@ -52,7 +67,8 @@
 \newcommand{\apd}[2]{\rapp{\Kapd_{#1}}{#2}}
 
 \newconstant{id}
-%% Types exprimant des proprietes d'objets
+
+%% (non classe) Types exprimant des proprietes d'objets
 
 \newtype{Fib}
 
@@ -60,4 +76,6 @@
 \newpredicate[is-equiv]{isEquiv}
 \newpredicate[is-prop]{isMereProp}
 \newpredicate[is-set]{isSet}
-\newpredicate[quasi-inverse]{qInv}
+\newpredicate[is-hae]{isHae}
+\newcommand{\hlevel}[1]{\keyw{is}\mbox{-}{#1}\mbox{-}\keyw{type}}
+\newcommand{\qInv}{\keyw{quasi-inverse}}

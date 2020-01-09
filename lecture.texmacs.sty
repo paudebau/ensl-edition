@@ -1,5 +1,5 @@
 % -*- coding: iso-safe-unix -*-
-% Time-stamp: <2017-09-26 10:18:03 (paudebau)>
+% Time-stamp: <2020-01-09 09:04:06 (paudebau)>
 
 \def\filename{lecture.texmacs.sty}
 \def\fileversion{1.0}
@@ -30,8 +30,6 @@
 \definecolor{dark green}{rgb}{0.1,0.5,0.1}
 \definecolor{dark green}{rgb}{0,.5,0}
 
-%%% ./latex.old/Bazar/programmationIImacros.sty
-%%% 1409
 \newtheorem{question}{\translate{Question}}
 
 % Il faudra retablir le mecanimse lignes/solution utilise a Nice...
@@ -93,19 +91,25 @@
 \providecommand{\tmname}[1]{\textsc{#1}}
 \providecommand{\tmstrong}[1]{\textbf{#1}}
 \providecommand{\tmverbatim}[1]{{\ttfamily{#1}}}
-
 \providecommand{\tmmathbf}[1]{\ensuremath{\boldsymbol{#1}}}
+\providecommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
 
-\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+\providecommand{\xleftrightarrow}[2][]{\mathop{\longleftrightarrow}\limits_{#1}^{#2}}
 
 \RequirePackage{makecmds} % fournit notamment 'provideenvironment'
 
+\provideenvironment{enumerateroman}{\begin{enumerate}[i.] }{\end{enumerate}}
 \provideenvironment{enumeratealpha}{\begin{enumerate}[a{\textup{)}}] }{\end{enumerate}}
 
 \newenvironment{tmcode}[1][]{\begin{alltt} }{\end{alltt}}
-%%% \newenvironment{tmindent}{\begin{tmparmod}{1.5em}{0pt}{0pt} }{\end{tmparmod}}
-%%% \newenvironment{tmparmod}[3]{\begin{list}{}{\setlength{\topsep}{0pt}\setlength{\leftmargin}{#1}\setlength{\rightmargin}{#2}\setlength{\parindent}{#3}\setlength{\listparindent}{\parindent}\setlength{\itemindent}{\parindent}\setlength{\parsep}{\parskip}} \item[]}{\end{list}}
-%%% {\theorembodyfont{\rmfamily\small}\newtheorem{exercise}{Exercise}}
-%%%
+\newenvironment{tmindent}{\begin{tmparmod}{1.5em}{0pt}{0pt}}{\end{tmparmod}}
+\newenvironment{tmparmod}[3]{\begin{list}{}{\setlength{\topsep}{0pt}\setlength{\leftmargin}{#1}\setlength{\rightmargin}{#2}\setlength{\parindent}{#3}\setlength{\listparindent}{\parindent}\setlength{\itemindent}{\parindent}\setlength{\parsep}{\parskip}} \item[]}{\end{list}}
 
-\providecommand{\xleftrightarrow}[2][]{\mathop{\longleftrightarrow}\limits_{#1}^{#2}}
+
+% TeXmacs
+
+\newcommand{\nequiv}{\not\equiv}
+\newcommand{\mrel}[1]{\mathrel{#1}}
+\newcommand{\marked}[1]{{\color{red} #1}}
+\newcommand{\assign}{:=}
+\newcommand{\textdots}{...}
